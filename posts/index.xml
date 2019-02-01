@@ -6,10 +6,20 @@
     <description>Recent content in Posts on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://SimY4.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Referential transparency</title>
+      <link>https://SimY4.github.io/posts/002-referential-transparency/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://SimY4.github.io/posts/002-referential-transparency/</guid>
+      <description>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
+2 + (2 * 2) &amp;lt;-&amp;gt; 2 + 4 &amp;lt;-&amp;gt; 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; &amp;lt;-&amp;gt; &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; &amp;lt;-&amp;gt; &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; &amp;lt;-&amp;gt; &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) &amp;lt;-&amp;gt; List(1, 2, 3, 4, 5, 6) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
+    </item>
     
     <item>
       <title>Here you are!</title>
