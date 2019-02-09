@@ -12,7 +12,7 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Referential transparency"/>
 <meta name="twitter:description" content="Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
-2 &#43; (2 * 2) &lt;-&gt; 2 &#43; 4 &lt;-&gt; 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; &lt;-&gt; &#34;Hello &#34; &#43; &#34;world&#34; &lt;-&gt; &#34;Hello&#34; &#43; &#34; world&#34; &lt;-&gt; &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) &lt;-&gt; List(1, 2, 3, 4, 5, 6) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments."/>
+2 &#43; (2 * 2) === 2 &#43; 4 === 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments."/>
 
 
     <base href="https://SimY4.github.io/posts/002-referential-transparency/">
@@ -43,7 +43,7 @@
 
     
 
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.54.0" />
   </head>
 
   <body class=" ">
@@ -111,15 +111,16 @@
 
       <div>
         <p>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">2 + (2 * 2) &lt;-&gt; 2 + 4 &lt;-&gt; 6
-<span style="font-style:italic">&#34;Hello&#34;</span> + <span style="font-style:italic">&#34; &#34;</span> + <span style="font-style:italic">&#34;world&#34;</span> &lt;-&gt; <span style="font-style:italic">&#34;Hello &#34;</span> + <span style="font-style:italic">&#34;world&#34;</span> &lt;-&gt; <span style="font-style:italic">&#34;Hello&#34;</span> + <span style="font-style:italic">&#34; world&#34;</span> &lt;-&gt; <span style="font-style:italic">&#34;Hello world&#34;</span>
-<span style="font-weight:bold">List</span>(1, 2, 3) ++ <span style="font-weight:bold">List</span>(4, 5, 6) &lt;-&gt; <span style="font-weight:bold">List</span>(1, 2, 3, 4, 5, 6)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">2 + (2 * 2) === 2 + 4 === 6
+<span style="font-style:italic">&#34;Hello&#34;</span> + <span style="font-style:italic">&#34; &#34;</span> + <span style="font-style:italic">&#34;world&#34;</span> === <span style="font-style:italic">&#34;Hello &#34;</span> + <span style="font-style:italic">&#34;world&#34;</span> === <span style="font-style:italic">&#34;Hello&#34;</span> + <span style="font-style:italic">&#34; world&#34;</span> === <span style="font-style:italic">&#34;Hello world&#34;</span>
+<span style="font-weight:bold">List</span>(1, 2, 3) ++ <span style="font-weight:bold">List</span>(4, 5, 6) === <span style="font-weight:bold">List</span>(1, 2, 3, 4, 5, 6)
+g(f(a)) === (g compose f)(a)</code></pre></div>
 <p>If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments. For example, they can perform dead code elimination which can evaluate arithmetic expressions into a constant value, interpolate string literals or get rid of staged builders. But some fragment they are not allowed to optimise just because they can&rsquo;t prove that this change will not break code&rsquo;s original semantics. So not only making our code referentially transparent give us better code readability but also it helps the compiler to perform certain optimisations that can make your code more performant.</p>
 
 <p>So, why something can be non-referentially transparent? Well, basically every expression containing side-effect or mutable state breaks the property of referential transparency.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">val</span> iterator <span style="font-weight:bold">=</span> <span style="font-weight:bold">List</span>(1, 2, 3).iterator
 <span style="font-weight:bold">val</span> next <span style="font-weight:bold">=</span> iterator.next
-next + next &lt;!&gt; iterator.next + iterator.next
+next + next =!= iterator.next + iterator.next
 
 <span style="font-weight:bold">import</span> <span style="font-weight:bold">scala.concurrent._</span>
 <span style="font-weight:bold">import</span> <span style="font-weight:bold">ExecutionContext.Implicits.global</span>
@@ -128,7 +129,7 @@ next + next &lt;!&gt; iterator.next + iterator.next
 
 <span style="font-weight:bold">def</span> readNumber <span style="font-weight:bold">=</span> <span style="font-weight:bold">Await</span>.result(<span style="font-weight:bold">Future</span> { readLine(<span style="font-style:italic">&#34;Give me a number&gt;&#34;</span>).toInt }, 10.seconds)
 <span style="font-weight:bold">val</span> number <span style="font-weight:bold">=</span> readNumber
-number + number &lt;!&gt; readNumber + readNumber</code></pre></div>
+number + number =!= readNumber + readNumber</code></pre></div>
 <p>You may wonder, how can our programs do anything useful without being able to perform side-effects? Well, let&rsquo;s talk about effects and side effects in the next blog post.</p>
 
       </div>

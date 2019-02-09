@@ -6,10 +6,19 @@
     <description>Recent content in Fp on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://SimY4.github.io/categories/fp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Effects and side-effects</title>
+      <link>https://SimY4.github.io/posts/003-effects-and-sideeffects/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://SimY4.github.io/posts/003-effects-and-sideeffects/</guid>
+      <description>So, to satisfy the property of referential transparency we need to keep our code free from any side-effects. One of the ways to achieve this is by lifting all side-effects into an effect. What is an effect in functional programming? Effect is a result of a function that isn&amp;rsquo;t pure. So, what&amp;rsquo;s a pure function then? A pure function is a function where the return value is determined only by its input arguments.</description>
+    </item>
     
     <item>
       <title>Referential transparency</title>
@@ -18,7 +27,7 @@
       
       <guid>https://SimY4.github.io/posts/002-referential-transparency/</guid>
       <description>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
-2 + (2 * 2) &amp;lt;-&amp;gt; 2 + 4 &amp;lt;-&amp;gt; 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; &amp;lt;-&amp;gt; &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; &amp;lt;-&amp;gt; &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; &amp;lt;-&amp;gt; &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) &amp;lt;-&amp;gt; List(1, 2, 3, 4, 5, 6) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
+2 + (2 * 2) === 2 + 4 === 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
     </item>
     
   </channel>
