@@ -6,10 +6,20 @@
     <description>Recent content on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kleisli composition</title>
+      <link>https://SimY4.github.io/posts/004-kleisli-composition/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://SimY4.github.io/posts/004-kleisli-composition/</guid>
+      <description>So say, we moved all of our side-effects into a nice exclict effects space, and we ended up having all these boilerplate for unpacking and inspecting the internal state of our effects in order to proceed further:
+val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[AccountId] = maybeUser match { case Some(user) =&amp;gt; getUserAccountId(user) case None =&amp;gt; None } val maybeUserAccount: Option[UserAccount] = maybeAccountId match { case Some(accountId) =&amp;gt; getAccount(accountId) case None =&amp;gt; None } There&amp;rsquo;s a lot of friction here to compose these types together and it&amp;rsquo;s very hard to follow what this code actually intended to do.</description>
+    </item>
     
     <item>
       <title>Effects and side-effects</title>
