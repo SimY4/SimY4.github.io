@@ -132,25 +132,25 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
 </span><span style="font-style:italic"></span>  <span style="font-weight:bold">implicit</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">FancyOp</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>], <span style="">A</span>, <span style="">B</span>](fab<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">B</span>]) <span style="font-weight:bold">extends</span> <span style="font-weight:bold">AnyVal</span> { 
     <span style="font-style:italic">// here we require that our F[_] should have an implicit instance of Fancy
 </span><span style="font-style:italic"></span>    <span style="font-style:italic">//                                \/
-</span><span style="font-style:italic"></span>    <span style="font-weight:bold">def</span> &gt;=&gt;[<span style="">C</span>](f<span style="font-weight:bold">:</span> <span style="">B</span> =&gt; F[<span style="">C</span>])(<span style="font-weight:bold">implicit</span> F<span style="font-weight:bold">:</span> <span style="">Fancy</span>[<span style="">F</span>])<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">C</span>] <span style="font-weight:bold">=</span> 
-      F.&gt;=&gt;(oa)(f)
+</span><span style="font-style:italic"></span>    <span style="font-weight:bold">def</span> &gt;=&gt;[<span style="">C</span>](fbc<span style="font-weight:bold">:</span> <span style="">B</span> =&gt; F[<span style="">C</span>])(<span style="font-weight:bold">implicit</span> F<span style="font-weight:bold">:</span> <span style="">Fancy</span>[<span style="">F</span>])<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">C</span>] <span style="font-weight:bold">=</span> 
+      F.&gt;=&gt;(fab, fbc)
   }
-}
 
-<span style="font-style:italic">// implicit Fancy trait instances for syntax
+  <span style="font-style:italic">// implicit Fancy trait instances for syntax
 </span><span style="font-style:italic"></span>
-<span style="font-weight:bold">implicit</span> <span style="font-weight:bold">val</span> fancyOption <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> <span style="font-weight:bold">Fancy</span>[<span style="">Option</span>] {
-  <span style="font-weight:bold">override</span> <span style="font-weight:bold">def</span> &gt;=&gt;[<span style="">A</span>, <span style="">B</span>, <span style="">C</span>](fab<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">B</span>], fbc<span style="font-weight:bold">:</span> <span style="">B</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">C</span>])<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">C</span>] <span style="font-weight:bold">=</span> { a <span style="font-weight:bold">=&gt;</span> 
-    fab(a) <span style="font-weight:bold">match</span> {
-      <span style="font-weight:bold">case</span> <span style="font-weight:bold">Some</span>(b) <span style="font-weight:bold">=&gt;</span> fbc(b)
-      <span style="font-weight:bold">case</span> <span style="font-weight:bold">None</span> <span style="font-weight:bold">=&gt;</span> <span style="font-weight:bold">None</span>
+  <span style="font-weight:bold">implicit</span> <span style="font-weight:bold">val</span> fancyOption <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> <span style="font-weight:bold">Fancy</span>[<span style="">Option</span>] {
+    <span style="font-weight:bold">override</span> <span style="font-weight:bold">def</span> &gt;=&gt;[<span style="">A</span>, <span style="">B</span>, <span style="">C</span>](fab<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">B</span>], fbc<span style="font-weight:bold">:</span> <span style="">B</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">C</span>])<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">C</span>] <span style="font-weight:bold">=</span> { a <span style="font-weight:bold">=&gt;</span> 
+      fab(a) <span style="font-weight:bold">match</span> {
+        <span style="font-weight:bold">case</span> <span style="font-weight:bold">Some</span>(b) <span style="font-weight:bold">=&gt;</span> fbc(b)
+        <span style="font-weight:bold">case</span> <span style="font-weight:bold">None</span> <span style="font-weight:bold">=&gt;</span> <span style="font-weight:bold">None</span>
+      }
     }
   }
 }</code></pre></div>
-<p>Having all this definitions in place we can rewrite our code into something like this:</p>
+<p>Having these definitions in place we can rewrite our code into something like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">val</span> getAccount<span style="font-weight:bold">:</span> <span style="">UserId</span> =&gt; <span style="font-weight:bold">Option</span>[<span style="">UserAccount</span>] <span style="font-weight:bold">=</span> getUserById <span style="font-weight:bold">_</span> &gt;=&gt; getUserId <span style="font-weight:bold">_</span> &gt;=&gt; getUserAccount <span style="font-weight:bold">_</span>
 getAccount(<span style="font-weight:bold">UserId</span>(1))</code></pre></div>
-<p>It seems that our fancy arrow gives us the missing ability to compose functions of shape <code>A =&gt; F[B]</code> in the same way as we used to compose pure functions. And it turns out that this composition that we just came up with, is well known in a branch of mathematics called category theory and is called Kleisli composition (named after mathematician <a href="Heinrich Kleisli">https://en.wikipedia.org/wiki/Heinrich_Kleisli</a>). Our fancy arrow is called Kleisli arrow and as long as they are pure, and referentially transparent they form a Kleisli category.</p>
+<p>It seems that our fancy arrow gives us the missing ability to compose functions of shape <code>A =&gt; F[B]</code> in the same way as we used to compose pure functions. And it turns out that this composition that we just came up with, is well known in a branch of mathematics called category theory and is called Kleisli composition (named after mathematician <a href="https://en.wikipedia.org/wiki/Heinrich_Kleisli" title="wiki: Heinrich Kleisli">Heinrich Kleisli</a>). Our fancy arrow is called Kleisli arrow and as long as they are pure, and referentially transparent they form a Kleisli category.</p>
 
       </div>
 
