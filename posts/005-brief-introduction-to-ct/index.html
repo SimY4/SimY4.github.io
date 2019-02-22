@@ -10,13 +10,13 @@
     <meta name="keywords" content="blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Brief introducation to Category theory"/>
+<meta name="twitter:title" content="Brief introduction to Category theory"/>
 <meta name="twitter:description" content="Let&rsquo;s briefly talk about Category theory. Category theory is a branch of set theory where the focus was shifted on relationships between sets rather than sets themselves. So, in category theory, we say that all sets are an atomic object that we can&rsquo;t look into and all relationships between sets are arrows that go from one atomic object to another with a few extra rules. First, all objects must have at least one identity arrow id: A -&gt; A that starts and ends on the same object."/>
 
 
     <base href="https://SimY4.github.io/posts/005-brief-introduction-to-ct/">
     <title>
-  Brief introducation to Category theory · My personal space
+  Brief introduction to Category theory · My personal space
 </title>
 
     <link rel="canonical" href="https://SimY4.github.io/posts/005-brief-introduction-to-ct/">
@@ -78,7 +78,7 @@
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">Brief introducation to Category theory</h1>
+          <h1 class="title">Brief introduction to Category theory</h1>
         </div>
         <div class="post-meta">
           <div class="date">
@@ -137,14 +137,14 @@
 }
 
 <span style="font-weight:bold">object</span> <span style="font-weight:bold">Shmancy</span> {
-  <span style="font-weight:bold">implicit</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ShmancyOp</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>], <span style="">A</span>, <span style="">B</span>](fa<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>]) <span style="font-weight:bold">extends</span> <span style="font-weight:bold">AnyVal</span> { 
+  <span style="font-weight:bold">implicit</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ShmancyOp</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>], <span style="">A</span>, <span style="">B</span>](<span style="font-weight:bold">private</span> <span style="font-weight:bold">val</span> fa<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>]) <span style="font-weight:bold">extends</span> <span style="font-weight:bold">AnyVal</span> { 
     <span style="font-weight:bold">def</span> &gt;&gt;=[<span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">B</span>])(<span style="font-weight:bold">implicit</span> F<span style="font-weight:bold">:</span> <span style="">Shmancy</span>[<span style="">F</span>])<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">B</span>] <span style="font-weight:bold">=</span> 
       F.&gt;&gt;=(fa)(f)
   }
 }
 
 <span style="font-weight:bold">trait</span> <span style="font-weight:bold">CategoryInstances1</span> {
-  <span style="font-style:italic">// Function1 category instance
+  <span style="font-style:italic">// Kleisli category instance
 </span><span style="font-style:italic"></span>  <span style="font-style:italic">//                 Type lamdba that encodes type constructor [A, B] =&gt; Function1[A, F[B]]
 </span><span style="font-style:italic"></span>  <span style="font-style:italic">//                                                                         \/
 </span><span style="font-style:italic"></span>  <span style="font-weight:bold">implicit</span> <span style="font-weight:bold">def</span> kleisliCategory[<span style="">F</span>[<span style="font-weight:bold">_</span>]](<span style="font-weight:bold">implicit</span> F<span style="font-weight:bold">:</span> <span style="">Shmancy</span>[<span style="">F</span>])<span style="font-weight:bold">:</span> <span style="">Category</span>[({ <span style="font-weight:bold">type</span> <span style="">T</span>[<span style="">A</span>, <span style="">B</span>] <span style="">=</span> <span style="">Function1</span>[<span style="">A</span>, <span style="">F</span>[<span style="">B</span>]] })<span style="font-weight:bold">#</span><span style="">T</span>] <span style="font-weight:bold">=</span> 
@@ -153,7 +153,7 @@
       <span style="font-weight:bold">def</span> compose[<span style="">A</span>, <span style="">B</span>, <span style="">C</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">B</span>], g<span style="font-weight:bold">:</span> <span style="">B</span> =&gt; F[<span style="">C</span>])<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">C</span>] <span style="font-weight:bold">=</span> { a <span style="font-weight:bold">=&gt;</span> f(a) &gt;&gt;= g }
     }
 }</code></pre></div>
-<p>Here we are. So, to make things compose in Kleisly category we need only two things, a function that can lift pure value into effect and a binding function that can apply function <code>A =&gt; F[B]</code> to <code>F[A]</code>. This definition is called a monad.</p>
+<p>Here we are. So, to make things compose in Kleisly category we need only two things, a function that can lift a pure value into an effect <code>F[_]</code> and a binding function that can apply function <code>A =&gt; F[B]</code> to <code>F[A]</code>. This definition is called a monad.</p>
 
       </div>
 
