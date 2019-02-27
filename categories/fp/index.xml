@@ -49,5 +49,14 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
 2 + (2 * 2) === 2 + 4 === 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
     </item>
     
+    <item>
+      <title>Mapping between categories</title>
+      <link>https://SimY4.github.io/posts/006-mapping-between-categories/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://SimY4.github.io/posts/006-mapping-between-categories/</guid>
+      <description>So, once we defined a category and played with them a little bit we start wondering if there are some relations between categories. And in fact, they do. Today we&amp;rsquo;re going to talk about functors. Functor is a mapping between two categories Category[A] =&amp;gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</description>
+    </item>
+    
   </channel>
 </rss>

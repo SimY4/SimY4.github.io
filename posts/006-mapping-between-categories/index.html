@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Alex Simkin">
+    <meta name="description" content="Alex Simkin&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mapping between categories"/>
+<meta name="twitter:description" content="So, once we defined a category and played with them a little bit we start wondering if there are some relations between categories. And in fact, they do. Today we&rsquo;re going to talk about functors. Functor is a mapping between two categories Category[A] =&gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:"/>
+
+
+    <base href="https://SimY4.github.io/posts/006-mapping-between-categories/">
+    <title>
+  Mapping between categories · My personal space
+</title>
+
+    <link rel="canonical" href="https://SimY4.github.io/posts/006-mapping-between-categories/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.8881182b3ec36ffd9c735306f7e16ce9b1129ebc650e069e7c4114827e9d9b23.css" integrity="sha256-iIEYKz7Db/2cc1MG9&#43;Fs6bESnrxlDgaefEEUgn6dmyM=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.54.0" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://SimY4.github.io">
+      My personal space
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://SimY4.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://SimY4.github.io/index.xml">RSS</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Mapping between categories</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='0001-01-01T00:00:00Z'>
+                January 1, 0001
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2 minutes read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="https://SimY4.github.io/categories/fp/">fp</a></div>
+
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://SimY4.github.io/tags/fp/">fp</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        <p>So, once we defined a category and played with them a little bit we start wondering if there are some relations between categories. And in fact, they do. Today we&rsquo;re going to talk about functors. Functor is a mapping between two categories <code>Category[A] =&gt; Category[F[B]]</code>. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] {
+  <span style="font-weight:bold">type</span> <span style="">FromCat</span>[<span style="">A</span>, <span style="">B</span>]
+  <span style="font-weight:bold">type</span> <span style="">ToCat</span>[<span style="">A</span>, <span style="">B</span>]
+
+  <span style="font-weight:bold">def</span> map[<span style="">A</span>, <span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">FromCat</span>[<span style="">A</span>, <span style="">B</span>])
+               (<span style="font-weight:bold">implicit</span> <span style="font-weight:bold">FromCat</span><span style="font-weight:bold">:</span> <span style="">Category</span>[<span style="">FromCat</span>], 
+                         <span style="font-weight:bold">ToCat</span><span style="font-weight:bold">:</span> <span style="">Category</span>[<span style="">ToCat</span>])<span style="font-weight:bold">:</span> <span style="">ToCat</span>[<span style="">F</span>[<span style="">A</span>], <span style="">F</span>[<span style="">B</span>]]
+}</code></pre></div>
+<p>Obviously, if we can map one category to another we can also map one category to itself. In this case, we call our functor an endofunctor (&lsquo;endo&rsquo; means the same). Most of the time when we use functors in Scala or Haskell we actually deal with endofunctors.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">EndoFunctor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] <span style="font-weight:bold">extends</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>] {
+  <span style="font-weight:bold">type</span> <span style="">Cat</span>[<span style="">A</span>, <span style="">B</span>]
+  <span style="font-weight:bold">override</span> <span style="font-weight:bold">type</span> <span style="">FromCat</span>[<span style="">A</span>, <span style="">B</span>] <span style="font-weight:bold">=</span> <span style="font-weight:bold">Cat</span>[<span style="">A</span>, <span style="">B</span>]
+  <span style="font-weight:bold">override</span> <span style="font-weight:bold">type</span> <span style="">ToCat</span>[<span style="">A</span>, <span style="">B</span>] <span style="font-weight:bold">=</span> <span style="font-weight:bold">Cat</span>[<span style="">A</span>, <span style="">B</span>]
+
+  <span style="font-weight:bold">def</span> mapEndo[<span style="">A</span>, <span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">Cat</span>[<span style="">A</span>, <span style="">B</span>])(<span style="font-weight:bold">implicit</span> cat<span style="font-weight:bold">:</span> <span style="">Category</span>[<span style="">Cat</span>])<span style="font-weight:bold">:</span> <span style="">Cat</span>[<span style="">F</span>[<span style="">A</span>], <span style="">F</span>[<span style="">B</span>]] <span style="font-weight:bold">=</span>
+    map(f)(cat, cat)
+}
+
+<span style="font-style:italic">// given a function A -&gt; B and F[A], we can produce F[B] given that F[_] is an endofunctor
+</span><span style="font-style:italic"></span><span style="font-weight:bold">type</span> <span style="">Function1EndoFunctor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] <span style="font-weight:bold">=</span> <span style="font-weight:bold">EndoFunctor</span>[<span style="">F</span>] {
+  <span style="font-weight:bold">type</span> <span style="">Cat</span>[<span style="">A</span>, <span style="">B</span>] <span style="font-weight:bold">=</span> A <span style="font-weight:bold">=&gt;</span> B
+}
+
+<span style="font-style:italic">// if A &lt;:&lt; B then F[A] &lt;:&lt; F[B] given that F[_] is an endofunctor
+</span><span style="font-style:italic"></span><span style="font-weight:bold">type</span> <span style="">TypeHierarchyEndoFunctor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] <span style="font-weight:bold">=</span> <span style="font-weight:bold">EndoFunctor</span>[<span style="">F</span>] {
+  <span style="font-weight:bold">type</span> <span style="">Cat</span>[<span style="">A</span>, <span style="">B</span>] <span style="font-weight:bold">=</span> A &lt;:&lt; B
+}</code></pre></div>
+<p><code>Function1EndoFunctor</code> and <code>TypeHierarchyEndoFunctor</code> are also called covariant functors because they preserve the direction of arrows. If in the resulting category the arrows go in the opposite way such functor is called contravariant functor. Now, since we kinda already know that functions and types form a category, we can remove the <code>Category[Function1]</code> instance evidence from <code>Function1EndoFunctor</code> to obtain a quite familiar definition of a functor:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-style:italic">// Actually it&#39;s endofunctor
+</span><span style="font-style:italic">//         \/
+</span><span style="font-style:italic"></span><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] {
+  <span style="font-weight:bold">def</span> map[<span style="">A</span>, <span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; B)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>] <span style="font-weight:bold">=&gt;</span> F[<span style="">B</span>]
+}</code></pre></div>
+<p>And the definition on a monad we came up with in the last blog post is sufficient to derive a functor for it:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Monad</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] <span style="font-weight:bold">extends</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>] {
+  <span style="font-weight:bold">def</span> pure[<span style="">A</span>](a<span style="font-weight:bold">:</span> <span style="">A</span>)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>]
+  <span style="font-weight:bold">def</span> &gt;&gt;=[<span style="">A</span>, <span style="">B</span>](fa<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>])(f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">B</span>])<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">B</span>]
+  <span style="font-weight:bold">override</span> <span style="font-weight:bold">def</span> map[<span style="">A</span>, <span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; B)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>] <span style="font-weight:bold">=&gt;</span> F[<span style="">B</span>] <span style="font-weight:bold">=</span> { fa <span style="font-weight:bold">=&gt;</span> fa &gt;&gt;= (f andThen pure) }
+}</code></pre></div>
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "actinglikecrazy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2019
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

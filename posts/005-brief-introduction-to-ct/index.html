@@ -114,7 +114,7 @@
 }
 
 <span style="font-weight:bold">object</span> <span style="font-weight:bold">Category</span> <span style="font-weight:bold">extends</span> <span style="font-weight:bold">CategoryInstances0</span> <span style="font-weight:bold">with</span> <span style="font-weight:bold">CategoryInstances1</span></code></pre></div>
-<p>Given this definition of a category, we can implement a few the most frequently used examples of categories. These are the category of functions and the category of type hierarchies.</p>
+<p>Given this definition of a category, we can implement a few the most frequently used examples of categories:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">CategoryInstances0</span> {
   <span style="font-style:italic">// Function1 category instance
 </span><span style="font-style:italic"></span>  <span style="font-weight:bold">implicit</span> <span style="font-weight:bold">val</span> functionsCategory<span style="font-weight:bold">:</span> <span style="">Category</span>[<span style="">Function1</span>] <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> <span style="font-weight:bold">Category</span>[<span style="">Function1</span>] {
@@ -130,7 +130,7 @@
 </span><span style="font-style:italic"></span>    <span style="font-weight:bold">def</span> compose[<span style="">A</span>, <span style="">B</span>, <span style="">C</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> <span style="font-weight:bold">&lt;:</span><span style="">&lt;</span> <span style="">B</span>, g<span style="font-weight:bold">:</span> <span style="">B</span> <span style="font-weight:bold">&lt;:</span><span style="">&lt;</span> <span style="">C</span>)<span style="font-weight:bold">:</span> <span style="">A</span> <span style="font-weight:bold">&lt;:</span><span style="">&lt;</span> <span style="">C</span> = g compose f
   }
 }</code></pre></div>
-<p>Now, let&rsquo;s try to define the Kleisli category in a generic way. To do this we&rsquo;ll need one extra helper trait with some standard scala plumbing to make it into a nice syntax.</p>
+<p>A category with a single object is called monoid. Now, let&rsquo;s try to define the Kleisli category in a generic way. To do this we&rsquo;ll need one extra helper trait with some standard scala plumbing to make it into a nice syntax.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Shmancy</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] {
   <span style="font-weight:bold">def</span> pure[<span style="">A</span>](a<span style="font-weight:bold">:</span> <span style="">A</span>)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>]
   <span style="font-weight:bold">def</span> &gt;&gt;=[<span style="">A</span>, <span style="">B</span>](fa<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>])(f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">B</span>])<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">B</span>]
