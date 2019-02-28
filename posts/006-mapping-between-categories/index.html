@@ -11,7 +11,7 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mapping between categories"/>
-<meta name="twitter:description" content="So, once we defined a category and played with them a little bit we start wondering if there are some relations between categories. And in fact, they do. Today we&rsquo;re going to talk about functors. Functor is a mapping between two categories Category[A] =&gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:"/>
+<meta name="twitter:description" content="So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:"/>
 
 
     <base href="https://SimY4.github.io/posts/006-mapping-between-categories/">
@@ -105,7 +105,7 @@
       </header>
 
       <div>
-        <p>So, once we defined a category and played with them a little bit we start wondering if there are some relations between categories. And in fact, they do. Today we&rsquo;re going to talk about functors. Functor is a mapping between two categories <code>Category[A] =&gt; Category[F[B]]</code>. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</p>
+        <p>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: <code>Category[A] =&gt; Category[F[B]]</code>. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] {
   <span style="font-weight:bold">type</span> <span style="">FromCat</span>[<span style="">A</span>, <span style="">B</span>]
   <span style="font-weight:bold">type</span> <span style="">ToCat</span>[<span style="">A</span>, <span style="">B</span>]
