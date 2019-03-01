@@ -6,10 +6,19 @@
     <description>Recent content on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mapping between categories</title>
+      <link>https://SimY4.github.io/posts/006-mapping-between-categories/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://SimY4.github.io/posts/006-mapping-between-categories/</guid>
+      <description>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&amp;rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&amp;gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</description>
+    </item>
     
     <item>
       <title>Brief introduction to Category theory</title>
@@ -58,15 +67,6 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
       <description>Hi, there.
 If you&amp;rsquo;re reading this that means that you&amp;rsquo;ve ended up in my personal blog. Welcome! I&amp;rsquo;ll try to keep it short and interesting for both of us.
 In the past few years, I&amp;rsquo;ve got fascinated by the topic of pure functional programming. I was lucky enough to see it being applied in real-world projects, I learned a lot from people practising it at their everyday work. And today, I believe I grasped enough knowledge on this topic for me to share it with you as a series of educative blog posts.</description>
-    </item>
-    
-    <item>
-      <title>Mapping between categories</title>
-      <link>https://SimY4.github.io/posts/006-mapping-between-categories/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/006-mapping-between-categories/</guid>
-      <description>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&amp;rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&amp;gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</description>
     </item>
     
   </channel>
