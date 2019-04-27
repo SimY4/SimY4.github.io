@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fp on My personal space</title>
+    <title>fp on My personal space</title>
     <link>https://SimY4.github.io/categories/fp/</link>
-    <description>Recent content in Fp on My personal space</description>
+    <description>Recent content in fp on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://SimY4.github.io/categories/fp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Applicative functor</title>
+      <link>https://SimY4.github.io/posts/007-applicative-functor/</link>
+      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://SimY4.github.io/posts/007-applicative-functor/</guid>
+      <description>We now have two of the most powerful abstractions in our hands - Monad and Functor. And we can do a lot with having just that. But at a certain point, they may still seem a little bit limited to you. The questions that may ask yourself is: how can I structure my code to be able to compose multiple effects running in parallel? Let&amp;rsquo;s see if what we can do with functors and monads first.</description>
+    </item>
     
     <item>
       <title>Mapping between categories</title>
@@ -17,7 +26,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://SimY4.github.io/posts/006-mapping-between-categories/</guid>
-      <description>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&amp;rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&amp;gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</description>
+      <description>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&amp;rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&amp;gt; Category[B]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</description>
     </item>
     
     <item>

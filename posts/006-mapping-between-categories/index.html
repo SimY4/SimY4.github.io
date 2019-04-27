@@ -11,24 +11,35 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mapping between categories"/>
-<meta name="twitter:description" content="So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&gt; Category[F[B]]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:"/>
+<meta name="twitter:description" content="So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&gt; Category[B]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:"/>
+
+    <meta property="og:title" content="Mapping between categories" />
+<meta property="og:description" content="So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&gt; Category[B]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://SimY4.github.io/posts/006-mapping-between-categories/" />
+<meta property="article:published_time" content="2019-03-01T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-03-01T00:00:00&#43;00:00"/>
 
 
-    <base href="https://SimY4.github.io/posts/006-mapping-between-categories/">
+    
+      <base href="https://SimY4.github.io/posts/006-mapping-between-categories/">
+    
     <title>
   Mapping between categories · My personal space
 </title>
 
-    <link rel="canonical" href="https://SimY4.github.io/posts/006-mapping-between-categories/">
+    
+      <link rel="canonical" href="https://SimY4.github.io/posts/006-mapping-between-categories/">
+    
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
 
     
       
       
-      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.8881182b3ec36ffd9c735306f7e16ce9b1129ebc650e069e7c4114827e9d9b23.css" integrity="sha256-iIEYKz7Db/2cc1MG9&#43;Fs6bESnrxlDgaefEEUgn6dmyM=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -40,9 +51,7 @@
     <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-16x16.png" sizes="16x16">
 
-    
-
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.55.4" />
   </head>
 
   <body class=" ">
@@ -105,7 +114,7 @@
       </header>
 
       <div>
-        <p>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: <code>Category[A] =&gt; Category[F[B]]</code>. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</p>
+        <p>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: <code>Category[A] =&gt; Category[B]</code>. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] {
   <span style="font-weight:bold">type</span> <span style="">FromCat</span>[<span style="">A</span>, <span style="">B</span>]
   <span style="font-weight:bold">type</span> <span style="">ToCat</span>[<span style="">A</span>, <span style="">B</span>]
@@ -143,11 +152,14 @@
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="font-weight:bold">trait</span> <span style="font-weight:bold">Monad</span>[<span style="">F</span>[<span style="font-weight:bold">_</span>]] <span style="font-weight:bold">extends</span> <span style="font-weight:bold">Functor</span>[<span style="">F</span>] {
   <span style="font-weight:bold">def</span> pure[<span style="">A</span>](a<span style="font-weight:bold">:</span> <span style="">A</span>)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>]
   <span style="font-weight:bold">def</span> &gt;&gt;=[<span style="">A</span>, <span style="">B</span>](fa<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>])(f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; F[<span style="">B</span>])<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">B</span>]
-  <span style="font-weight:bold">override</span> <span style="font-weight:bold">def</span> map[<span style="">A</span>, <span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; B)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>] <span style="font-weight:bold">=&gt;</span> F[<span style="">B</span>] <span style="font-weight:bold">=</span> { fa <span style="font-weight:bold">=&gt;</span> fa &gt;&gt;= (f andThen pure) }
+  <span style="font-weight:bold">override</span> <span style="font-weight:bold">def</span> map[<span style="">A</span>, <span style="">B</span>](f<span style="font-weight:bold">:</span> <span style="">A</span> =&gt; B)<span style="font-weight:bold">:</span> <span style="">F</span>[<span style="">A</span>] <span style="font-weight:bold">=&gt;</span> F[<span style="">B</span>] <span style="font-weight:bold">=</span> { fa <span style="font-weight:bold">=&gt;</span> &gt;&gt;=(fa)(f andThen pure) }
 }</code></pre></div>
       </div>
 
       <footer>
+        
+
+
         <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
