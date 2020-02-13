@@ -12,15 +12,15 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Referential transparency"/>
 <meta name="twitter:description" content="Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
-2 &#43; (2 * 2) === 2 &#43; 4 === 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments."/>
+2 &#43; (2 * 2) === 2 &#43; 4 === 6&#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34;List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6)g(f(a)) === (g compose f)(a)If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments."/>
 
     <meta property="og:title" content="Referential transparency" />
 <meta property="og:description" content="Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
-2 &#43; (2 * 2) === 2 &#43; 4 === 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments." />
+2 &#43; (2 * 2) === 2 &#43; 4 === 6&#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34;List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6)g(f(a)) === (g compose f)(a)If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://SimY4.github.io/posts/002-referential-transparency/" />
-<meta property="article:published_time" content="2019-02-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-02-01T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2019-02-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-02-01T00:00:00+00:00" />
 
 
     
@@ -35,13 +35,17 @@
     
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
     
       
       
-      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.624134b411585efffadab6a91e7d0383f0d4e22ad49de3690eccbc96f528e670.css" integrity="sha256-YkE0tBFYXv/62rapHn0Dg/DU4irUneNpDsy8lvUo5nA=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
     
 
     
@@ -53,16 +57,19 @@
     <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.4" />
+    <meta name="generator" content="Hugo 0.64.1" />
   </head>
 
-  <body class=" ">
+  
+  
+  <body class="colorscheme-light">
     <main class="wrapper">
       <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="https://SimY4.github.io">
+    <a class="navigation-title" href="https://SimY4.github.io/">
       My personal space
     </a>
+    
     <input type="checkbox" id="menu-toggle" />
     <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
     <ul class="navigation-list">
@@ -79,6 +86,7 @@
       
       
     </ul>
+    
   </section>
 </nav>
 
@@ -101,7 +109,7 @@
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              2 minutes read
+              2-minute read
             </span>
           </div>
           <div class="categories">
@@ -116,15 +124,15 @@
       </header>
 
       <div>
+        
         <p>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#40a070">2</span> <span style="color:#666">+</span> <span style="color:#666">(</span><span style="color:#40a070">2</span> <span style="color:#666">*</span> <span style="color:#40a070">2</span><span style="color:#666">)</span> <span style="color:#666">===</span> <span style="color:#40a070">2</span> <span style="color:#666">+</span> <span style="color:#40a070">4</span> <span style="color:#666">===</span> <span style="color:#40a070">6</span>
 <span style="color:#4070a0">&#34;Hello&#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34; &#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34;world&#34;</span> <span style="color:#666">===</span> <span style="color:#4070a0">&#34;Hello &#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34;world&#34;</span> <span style="color:#666">===</span> <span style="color:#4070a0">&#34;Hello&#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34; world&#34;</span> <span style="color:#666">===</span> <span style="color:#4070a0">&#34;Hello world&#34;</span>
 <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">)</span> <span style="color:#666">++</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">4</span><span style="color:#666">,</span> <span style="color:#40a070">5</span><span style="color:#666">,</span> <span style="color:#40a070">6</span><span style="color:#666">)</span> <span style="color:#666">===</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">,</span> <span style="color:#40a070">4</span><span style="color:#666">,</span> <span style="color:#40a070">5</span><span style="color:#666">,</span> <span style="color:#40a070">6</span><span style="color:#666">)</span>
-g<span style="color:#666">(</span>f<span style="color:#666">(</span>a<span style="color:#666">))</span> <span style="color:#666">===</span> <span style="color:#666">(</span>g compose f<span style="color:#666">)(</span>a<span style="color:#666">)</span></code></pre></div>
-<p>If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments. For example, they can perform dead code elimination which can evaluate arithmetic expressions into a constant value, interpolate string literals or get rid of staged builders. But some fragment they are not allowed to optimise just because they can&rsquo;t prove that this change will not break code&rsquo;s original semantics. So not only making our code referentially transparent give us better code readability but also it helps the compiler to perform certain optimisations that can make your code more performant.</p>
-
+g<span style="color:#666">(</span>f<span style="color:#666">(</span>a<span style="color:#666">)</span><span style="color:#666">)</span> <span style="color:#666">===</span> <span style="color:#666">(</span>g compose f<span style="color:#666">)</span><span style="color:#666">(</span>a<span style="color:#666">)</span>
+</code></pre></div><p>If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments. For example, they can perform dead code elimination which can evaluate arithmetic expressions into a constant value, interpolate string literals or get rid of staged builders. But some fragment they are not allowed to optimise just because they can&rsquo;t prove that this change will not break code&rsquo;s original semantics. So not only making our code referentially transparent give us better code readability but also it helps the compiler to perform certain optimisations that can make your code more performant.</p>
 <p>So, why something can be non-referentially transparent? Well, basically every expression containing side-effect or mutable state breaks the property of referential transparency.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">val</span> iterator <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">).</span>iterator
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">val</span> iterator <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">)</span><span style="color:#666">.</span>iterator
 <span style="color:#007020;font-weight:bold">val</span> next <span style="color:#007020;font-weight:bold">=</span> iterator<span style="color:#666">.</span>next
 next <span style="color:#666">+</span> next <span style="color:#666">=!=</span> iterator<span style="color:#666">.</span>next <span style="color:#666">+</span> iterator<span style="color:#666">.</span>next
 
@@ -133,12 +141,13 @@ next <span style="color:#666">+</span> next <span style="color:#666">=!=</span> 
 <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">scala.concurrent.duration._</span>
 <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">scala.io.StdIn._</span>
 
-<span style="color:#007020;font-weight:bold">def</span> readNumber <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">Await</span><span style="color:#666">.</span>result<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">Future</span> <span style="color:#666">{</span> readLine<span style="color:#666">(</span><span style="color:#4070a0">&#34;Give me a number&gt;&#34;</span><span style="color:#666">).</span>toInt <span style="color:#666">},</span> <span style="color:#40a070">10.</span>seconds<span style="color:#666">)</span>
+<span style="color:#007020;font-weight:bold">def</span> readNumber <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">Await</span><span style="color:#666">.</span>result<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">Future</span> <span style="color:#666">{</span> readLine<span style="color:#666">(</span><span style="color:#4070a0">&#34;Give me a number&gt;&#34;</span><span style="color:#666">)</span><span style="color:#666">.</span>toInt <span style="color:#666">}</span><span style="color:#666">,</span> <span style="color:#40a070">10.</span>seconds<span style="color:#666">)</span>
 <span style="color:#007020;font-weight:bold">val</span> number <span style="color:#007020;font-weight:bold">=</span> readNumber
-number <span style="color:#666">+</span> number <span style="color:#666">=!=</span> readNumber <span style="color:#666">+</span> readNumber</code></pre></div>
-<p>You may wonder, how can our programs do anything useful without being able to perform side-effects? Well, let&rsquo;s talk about effects and side effects in the next blog post.</p>
+number <span style="color:#666">+</span> number <span style="color:#666">=!=</span> readNumber <span style="color:#666">+</span> readNumber
+</code></pre></div><p>You may wonder, how can our programs do anything useful without being able to perform side-effects? Well, let&rsquo;s talk about effects and side effects in the next blog post.</p>
 
       </div>
+
 
       <footer>
         
@@ -164,10 +173,28 @@ number <span style="color:#666">+</span> number <span style="color:#666">=!=</sp
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
       </footer>
     </article>
 
-    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'], ['\\(', '\\)']
+        ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
   </section>
 
       </div>
@@ -175,7 +202,12 @@ number <span style="color:#666">+</span> number <span style="color:#666">=!=</sp
       <footer class="footer">
   <section class="container">
     
-     © 2019
+    
+      
+        © 2020
+      
+       Alex Simkin 
+    
     
        · 
       Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
@@ -185,6 +217,8 @@ number <span style="color:#666">+</span> number <span style="color:#666">=!=</sp
 </footer>
 
     </main>
+
+    
 
     
 

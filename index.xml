@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My personal space</title>
@@ -45,7 +45,7 @@
       
       <guid>https://SimY4.github.io/posts/004-kleisli-composition/</guid>
       <description>So say, we moved all of our side-effects into a nice exclict effects space, and we ended up having all these boilerplate for unpacking and inspecting the internal state of our effects in order to proceed further:
-val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[AccountId] = maybeUser match { case Some(user) =&amp;gt; getUserAccountId(user) case None =&amp;gt; None } val maybeUserAccount: Option[UserAccount] = maybeAccountId match { case Some(accountId) =&amp;gt; getAccount(accountId) case None =&amp;gt; None } There&amp;rsquo;s a lot of friction here to compose these types together and it&amp;rsquo;s very hard to follow what this code actually intended to do.</description>
+val maybeUser: Option[User] = getUserById(UserId(1))val maybeAccountId: Option[AccountId] = maybeUser match {case Some(user) =&amp;gt; getUserAccountId(user)case None =&amp;gt; None}val maybeUserAccount: Option[UserAccount] = maybeAccountId match {case Some(accountId) =&amp;gt; getAccount(accountId)case None =&amp;gt; None}There&amp;rsquo;s a lot of friction here to compose these types together and it&amp;rsquo;s very hard to follow what this code actually intended to do.</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
       
       <guid>https://SimY4.github.io/posts/002-referential-transparency/</guid>
       <description>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
-2 + (2 * 2) === 2 + 4 === 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
+2 + (2 * 2) === 2 + 4 === 6&amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34;List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6)g(f(a)) === (g compose f)(a)If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
     </item>
     
     <item>
