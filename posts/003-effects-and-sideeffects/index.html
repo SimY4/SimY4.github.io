@@ -32,14 +32,14 @@
       <link rel="canonical" href="https://SimY4.github.io/posts/003-effects-and-sideeffects/">
     
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
     
       
       
-      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.624134b411585efffadab6a91e7d0383f0d4e22ad49de3690eccbc96f528e670.css" integrity="sha256-YkE0tBFYXv/62rapHn0Dg/DU4irUneNpDsy8lvUo5nA=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -55,7 +55,7 @@
     <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.68.1" />
   </head>
 
   
@@ -124,7 +124,7 @@
       <div>
         
         <p>So, to satisfy the property of referential transparency we need to keep our code free from any side-effects. One of the ways to achieve this is by lifting all side-effects into an effect. What is an effect in functional programming? Effect is a result of a function that isn&rsquo;t pure. So, what&rsquo;s a pure function then? A pure function is a function where the return value is determined only by its input arguments. A few examples of pure functions are:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">def</span> identity<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#666">(</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=</span> a
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">def</span> identity<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=</span> a
 <span style="color:#007020;font-weight:bold">def</span> min<span style="color:#666">(</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Long</span><span style="color:#666">,</span> b<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Long</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Long</span> <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">if</span> <span style="color:#666">(</span>a <span style="color:#666">&lt;</span> b<span style="color:#666">)</span> a <span style="color:#007020;font-weight:bold">else</span> b
 <span style="color:#007020;font-weight:bold">def</span> reverse<span style="color:#666">(</span>s<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">String</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">String</span> <span style="color:#666">=</span> s<span style="color:#666">.</span>foldLeft<span style="color:#666">(</span><span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span> <span style="color:#666">(</span>acc<span style="color:#666">,</span> ch<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> ch <span style="color:#666">+</span> acc <span style="color:#666">}</span>
 </code></pre></div><p>And what&rsquo;s are effectful functions then? We can call any function in the form of <code>A =&gt; F[B]</code> where <code>F</code> is a container that encodes the possibility of the function to perform some sort of an effectful action (i.e. return abnormally by throwing an exception, produce some output, etc). Keep in mind that having an effect as a return type doesn&rsquo;t give us the right to break referential transparency (for example <code>scala.concurrent.Future</code> look like a suitable type, it&rsquo;s by design not referentially transparent therefore can&rsquo;t be used to represent pure FP effects). Some examples of standard effects and effectful functions are:</p>
@@ -133,11 +133,11 @@
   <span style="color:#007020;font-weight:bold">case</span> <span style="color:#007020;font-weight:bold">_</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Some</span><span style="color:#666">(</span>a <span style="color:#666">/</span> b<span style="color:#666">)</span>
 <span style="color:#666">}</span>
 <span style="color:#60a0b0;font-style:italic">//          F[B] is Either[String, B]
-</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#60a0b0;font-style:italic">//                    \/
+</span><span style="color:#60a0b0;font-style:italic">//                    \/
 </span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">def</span> toInt<span style="color:#666">(</span>s<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">String</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Either</span><span style="color:#666">[</span><span style="color:#902000">String</span>, <span style="color:#902000">Int</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#007020;font-weight:bold">try</span> <span style="color:#666">{</span>  
     <span style="color:#0e84b5;font-weight:bold">Right</span><span style="color:#666">(</span>s<span style="color:#666">.</span>toInt<span style="color:#666">)</span> 
   <span style="color:#666">}</span> <span style="color:#007020;font-weight:bold">catch</span> <span style="color:#666">{</span> 
-    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#007020;font-weight:bold">_</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">NumberFormatException</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Left</span><span style="color:#666">(</span><span style="color:#4070a0">&#34;NaN&#34;</span><span style="color:#666">)</span> 
+    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#007020;font-weight:bold">_:</span> <span style="color:#902000">NumberFormatException</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Left</span><span style="color:#666">(</span><span style="color:#4070a0">&#34;NaN&#34;</span><span style="color:#666">)</span> 
   <span style="color:#666">}</span>
 <span style="color:#007020;font-weight:bold">def</span> range<span style="color:#666">(</span>i<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Int</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">List</span><span style="color:#666">[</span><span style="color:#902000">Int</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">.</span>range<span style="color:#666">(</span><span style="color:#40a070">0</span><span style="color:#666">,</span> i<span style="color:#666">)</span> <span style="color:#60a0b0;font-style:italic">// &lt;- list is effect too
 </span></code></pre></div><p>The major problem with effectful return types is that the standard rule of functional composition can&rsquo;t be applied to them. You can easily compose functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to get the function <code>A =&gt; C</code> but you can&rsquo;t compose effectful functions <code>A =&gt; F[B]</code> and <code>B =&gt; F[C]</code>. Or can you?</p>
