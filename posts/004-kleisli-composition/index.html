@@ -42,7 +42,7 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
     
       
       
-      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css" integrity="sha256-cIaG&#43;KuBdukdRPy&#43;SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -59,16 +59,12 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
     <link rel="apple-touch-icon" href="https://SimY4.github.io/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://SimY4.github.io/images/apple-touch-icon.png">
 
-    
-
-    <meta name="generator" content="Hugo 0.85.0" />
+    <meta name="generator" content="Hugo 0.89.4" />
   </head>
 
   
   
-  <body class="preload-transitions colorscheme-light"
-        onload=""
-  >
+  <body class="preload-transitions colorscheme-light">
     
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
@@ -149,7 +145,7 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
       <div>
         
         <p>So say, we moved all of our side-effects into a nice exclict effects space, and we ended up having all these boilerplate for unpacking and inspecting the internal state of our effects in order to proceed further:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">val</span> maybeUser<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">User</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> getUserById<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">UserId</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">))</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">val</span> maybeUser<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">User</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> getUserById<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">UserId</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">))</span>
 <span style="color:#007020;font-weight:bold">val</span> maybeAccountId<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">AccountId</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> maybeUser <span style="color:#007020;font-weight:bold">match</span> <span style="color:#666">{</span>
     <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">Some</span><span style="color:#666">(</span>user<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> getUserAccountId<span style="color:#666">(</span>user<span style="color:#666">)</span>
     <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">None</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">None</span>
@@ -159,7 +155,7 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
     <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">None</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">None</span>
   <span style="color:#666">}</span>
 </code></pre></div><p>There&rsquo;s a lot of friction here to compose these types together and it&rsquo;s very hard to follow what this code actually intended to do. What if we can add an abstraction that could hide all this boilerplate from us? Let&rsquo;s try to figure something out. We can define a trait for the composition of two effectful functions. It&rsquo;ll have just one method that&rsquo;ll look like a fancy arrow (or fish arrow, depending on how you look at it):</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#60a0b0;font-style:italic">// parameterized by any type which is itself parameterised by single type argument
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#60a0b0;font-style:italic">// parameterized by any type which is itself parameterised by single type argument
 </span><span style="color:#60a0b0;font-style:italic">//          \/
 </span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Fancy</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#666">{</span>
   <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;=&gt;[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span>, <span style="color:#902000">C</span><span style="color:#666">](</span>fab<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">],</span> fbc<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">]</span>
@@ -186,7 +182,7 @@ val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[
   <span style="color:#666">}</span>
 <span style="color:#666">}</span>
 </code></pre></div><p>Having these definitions in place we can rewrite our code into something like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">val</span> getAccount<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">UserId</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Option</span><span style="color:#666">[</span><span style="color:#902000">UserAccount</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> getUserById <span style="color:#007020;font-weight:bold">_</span> <span style="color:#666">&gt;=&gt;</span> getUserId <span style="color:#007020;font-weight:bold">_</span> <span style="color:#666">&gt;=&gt;</span> getUserAccount <span style="color:#007020;font-weight:bold">_</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">val</span> getAccount<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">UserId</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Option</span><span style="color:#666">[</span><span style="color:#902000">UserAccount</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> getUserById <span style="color:#007020;font-weight:bold">_</span> <span style="color:#666">&gt;=&gt;</span> getUserId <span style="color:#007020;font-weight:bold">_</span> <span style="color:#666">&gt;=&gt;</span> getUserAccount <span style="color:#007020;font-weight:bold">_</span>
 getAccount<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">UserId</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">))</span>
 </code></pre></div><p>It seems that our fancy arrow gives us the missing ability to compose functions of shape <code>A =&gt; F[B]</code> in the same way as we used to compose pure functions. And it turns out that this composition that we just came up with, is well known in a branch of mathematics called category theory and is called Kleisli composition (named after mathematician <a href="https://en.wikipedia.org/wiki/Heinrich_Kleisli" title="wiki: Heinrich Kleisli">Heinrich Kleisli</a>). Our fancy arrow is called Kleisli arrow and as long as they are pure, and referentially transparent they form a Kleisli category.</p>
 
@@ -222,45 +218,38 @@ getAccount<span style="color:#666">(</span><span style="color:#0e84b5;font-weigh
       </footer>
     </article>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
   
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [
-          ['$', '$'], ['\\(', '\\)']
-        ],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
       }
-    };
-  </script>
+    );"></script>
   </section>
 
       </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-        2021
-         Alex Simkin 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+    2021
+     Alex Simkin 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
 
     </main>
 

@@ -39,7 +39,7 @@
     
       
       
-      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css" integrity="sha256-cIaG&#43;KuBdukdRPy&#43;SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -56,16 +56,12 @@
     <link rel="apple-touch-icon" href="https://SimY4.github.io/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://SimY4.github.io/images/apple-touch-icon.png">
 
-    
-
-    <meta name="generator" content="Hugo 0.85.0" />
+    <meta name="generator" content="Hugo 0.89.4" />
   </head>
 
   
   
-  <body class="preload-transitions colorscheme-light"
-        onload=""
-  >
+  <body class="preload-transitions colorscheme-light">
     
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
@@ -146,7 +142,7 @@
       <div>
         
         <p>We now have two of the most powerful abstractions in our hands - Monad and Functor. And we can do a lot with having just that. But at a certain point, they may still seem a little bit limited to you. The questions that may ask yourself is: how can I structure my code to be able to compose multiple effects running in parallel? Let&rsquo;s see if what we can do with functors and monads first.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">def</span> doSomeWork<span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">String</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#666">???</span> <span style="color:#60a0b0;font-style:italic">// &lt;- unit or work
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">def</span> doSomeWork<span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">String</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#666">???</span> <span style="color:#60a0b0;font-style:italic">// &lt;- unit or work
 </span><span style="color:#60a0b0;font-style:italic"></span>
 <span style="color:#60a0b0;font-style:italic">// we want to compose two units of work to get the results of two running in parallel
 </span><span style="color:#60a0b0;font-style:italic"></span>
@@ -162,7 +158,7 @@
 </span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">// This would work and type signatures would match but because of the stucture of 
 </span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">// our bind function (&gt;&gt;=) we can only make it work sequentially.
 </span></code></pre></div><p>In the example above we can see that monads and functors are naturally sequential. In order to produce the value of type <code>F[B]</code> we need to know the value of <code>A</code> to feed it into the function <code>A =&gt; F[B]</code>. And in order for us to know the value of <code>A</code> we need to wait on the first effect to complete. So, monads can&rsquo;t model parallelism. That feels like our abstractions missing something very crusial to start using them for any CS problem. We would want something with the signature that would allow us to compose two effects without waiting on previous value. Something like <code>zip[F[_], A, B](fa: F[A], fb: F[B]): F[(A, B)]</code> but for an arbitrary number of effects. And in fact, there’s one abstraction that we didn’t talk about yet but that can address this exact problem and it’s called an applicative functor. An applicative functor is defined like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">ApplicativeFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#0e84b5;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">Functor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span> <span style="color:#666">{</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">ApplicativeFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#0e84b5;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">Functor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span> <span style="color:#666">{</span>
   <span style="color:#007020;font-weight:bold">def</span> pure<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#60a0b0;font-style:italic">// &lt;- straight from the monad definition
 </span><span style="color:#60a0b0;font-style:italic"></span>
   <span style="color:#007020;font-weight:bold">def</span> ap<span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>ff<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#902000">B</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span>
@@ -176,7 +172,7 @@
     ap<span style="color:#666">(</span>map<span style="color:#666">(</span>a <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#666">(</span>b<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span><span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#666">(</span>a<span style="color:#666">,</span> b<span style="color:#666">))(</span>fa<span style="color:#666">))(</span>fb<span style="color:#666">)</span>
 <span style="color:#666">}</span>
 </code></pre></div><p>As we can see from the definition of an <code>ap</code> function it takes two effects <code>F[A =&gt; B]</code> and <code>F[A]</code> and produces next effect <code>F[B]</code>. No runtime value dependency, pure effect type composition. Having an applicative functor we can derive a function that can compose an arbitrary number of effects together:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#60a0b0;font-style:italic">// map instances for 2, 3 and 4 effects
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#60a0b0;font-style:italic">// map instances for 2, 3 and 4 effects
 </span><span style="color:#60a0b0;font-style:italic"></span>    
 <span style="color:#007020;font-weight:bold">def</span> map2<span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span>, <span style="color:#902000">Z</span><span style="color:#666">](</span>fa<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">],</span> fb<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])(</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#666">(</span><span style="color:#902000">A</span><span style="color:#666">,</span> <span style="color:#902000">B</span><span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> Z<span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">Z</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span>
   F<span style="color:#666">.</span>map<span style="color:#666">({</span> <span style="color:#007020;font-weight:bold">case</span> <span style="color:#666">(</span>a<span style="color:#666">,</span> b<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> f<span style="color:#666">(</span>a<span style="color:#666">,</span> b<span style="color:#666">)})(</span>F<span style="color:#666">.</span>zip<span style="color:#666">(</span>fa<span style="color:#666">,</span> fb<span style="color:#666">))</span>
@@ -192,11 +188,11 @@
 <span style="color:#007020;font-weight:bold">def</span> composeTwoWithApplictive<span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]](</span><span style="color:#007020;font-weight:bold">implicit</span> F<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Applicative</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[(</span><span style="color:#902000">String</span>, <span style="color:#902000">String</span><span style="color:#666">)]</span> <span style="color:#007020;font-weight:bold">=</span> 
   F<span style="color:#666">.</span>zip<span style="color:#666">(</span>doSomeWork<span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">],</span> doSomeWork<span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">])</span>
 </code></pre></div><p>We now have three the most widely used combinators of pure functional programming - functor, applicative functor and monad. If you think about it, they look very similar but they serve completely different purposes.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">map<span style="color:#666">(</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> B<span style="color:#666">)</span>   <span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#60a0b0;font-style:italic">// &lt;- functor.             Transforms values inside an effect
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">map<span style="color:#666">(</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> B<span style="color:#666">)</span>   <span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#60a0b0;font-style:italic">// &lt;- functor.             Transforms values inside an effect
 </span><span style="color:#60a0b0;font-style:italic"></span>ap <span style="color:#666">(</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#902000">B</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#60a0b0;font-style:italic">// &lt;- applicative functor. Composes effects together
 </span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#666">&gt;&gt;=(</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#60a0b0;font-style:italic">// &lt;- monad.               Produces an effect based on previous effect
 </span></code></pre></div><p>And of course since applicative is a functor we can again include it in our monad definition:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Monad</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#0e84b5;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">ApplicativeFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span> <span style="color:#666">{</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Monad</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#0e84b5;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">ApplicativeFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span> <span style="color:#666">{</span>
   <span style="color:#007020;font-weight:bold">def</span> pure<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span>
   <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;&gt;=[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span>
   <span style="color:#007020;font-weight:bold">override</span> <span style="color:#007020;font-weight:bold">def</span> ap<span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>ff<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#902000">B</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#666">{</span> fa <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#666">&gt;&gt;=((</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> B<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> map<span style="color:#666">(</span>f<span style="color:#666">)(</span>fa<span style="color:#666">))(</span>ff<span style="color:#666">)</span> <span style="color:#666">}</span>
@@ -235,45 +231,38 @@
       </footer>
     </article>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
   
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [
-          ['$', '$'], ['\\(', '\\)']
-        ],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
       }
-    };
-  </script>
+    );"></script>
   </section>
 
       </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-        2021
-         Alex Simkin 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+    2021
+     Alex Simkin 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
 
     </main>
 

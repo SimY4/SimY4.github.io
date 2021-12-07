@@ -39,7 +39,7 @@
     
       
       
-      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css" integrity="sha256-cIaG&#43;KuBdukdRPy&#43;SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -56,16 +56,12 @@
     <link rel="apple-touch-icon" href="https://SimY4.github.io/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://SimY4.github.io/images/apple-touch-icon.png">
 
-    
-
-    <meta name="generator" content="Hugo 0.85.0" />
+    <meta name="generator" content="Hugo 0.89.4" />
   </head>
 
   
   
-  <body class="preload-transitions colorscheme-light"
-        onload=""
-  >
+  <body class="preload-transitions colorscheme-light">
     
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
@@ -146,7 +142,7 @@
       <div>
         
         <p>Let&rsquo;s briefly talk about Category theory. Category theory is a branch of set theory where the focus was shifted on relationships between sets rather than sets themselves. So, in category theory, we say that all sets are an atomic object that we can&rsquo;t look into and all relationships between sets are arrows that go from one atomic object to another with a few extra rules. First, all objects must have at least one identity arrow <code>id: A -&gt; A</code> that starts and ends on the same object. Second, all arrows have to be composable, meaning that if you have two arrows <code>f: A -&gt; B</code> and <code>g: B -&gt; C</code> there should always be at least one arrow <code>g . f: A -&gt; C</code> and these compositions must be associative (<code>(f . g) . h == f . (g . h)</code>). It&rsquo;s pretty much all we need to know at this point, having these rules we can model them in scala:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">  <span style="color:#60a0b0;font-style:italic">// Parameterized with a type with two type holes in it
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">  <span style="color:#60a0b0;font-style:italic">// Parameterized with a type with two type holes in it
 </span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">//           \/
 </span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#902000">:=&gt;</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span>, <span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#666">{</span>
   <span style="color:#007020;font-weight:bold">def</span> id<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#902000">:=&gt;</span> <span style="color:#902000">A</span>
@@ -155,7 +151,7 @@
 
 <span style="color:#007020;font-weight:bold">object</span> <span style="color:#0e84b5;font-weight:bold">Category</span> <span style="color:#007020;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances0</span> <span style="color:#007020;font-weight:bold">with</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances1</span>
 </code></pre></div><p>Given this definition of a category, we can implement a few the most frequently used examples of categories:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances0</span> <span style="color:#666">{</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances0</span> <span style="color:#666">{</span>
   <span style="color:#60a0b0;font-style:italic">// Function1 category instance
 </span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#007020;font-weight:bold">implicit</span> <span style="color:#007020;font-weight:bold">val</span> functionsCategory<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Category</span><span style="color:#666">[</span><span style="color:#902000">Function1</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#007020;font-weight:bold">new</span> <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#902000">Function1</span><span style="color:#666">]</span> <span style="color:#666">{</span>
     <span style="color:#007020;font-weight:bold">def</span> id<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> A <span style="color:#007020;font-weight:bold">=</span> identity
@@ -171,7 +167,7 @@
   <span style="color:#666">}</span>
 <span style="color:#666">}</span>
 </code></pre></div><p>A category with a single object is called monoid. Now, let&rsquo;s try to define the Kleisli category in a generic way. To do this we&rsquo;ll need one extra helper trait with some standard scala plumbing to make it into a nice syntax.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Shmancy</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#666">{</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Shmancy</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#666">{</span>
   <span style="color:#007020;font-weight:bold">def</span> pure<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span>
   <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;&gt;=[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span>
 <span style="color:#666">}</span>
@@ -227,45 +223,38 @@
       </footer>
     </article>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
   
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [
-          ['$', '$'], ['\\(', '\\)']
-        ],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
       }
-    };
-  </script>
+    );"></script>
   </section>
 
       </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-        2021
-         Alex Simkin 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+    2021
+     Alex Simkin 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
 
     </main>
 
