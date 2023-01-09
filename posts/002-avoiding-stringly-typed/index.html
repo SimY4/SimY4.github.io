@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Avoiding Stringly Typed · My personal space
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Alex Simkin">
+<meta name="description" content="There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:
+interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Avoiding Stringly Typed"/>
+<meta name="twitter:description" content="There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:
+interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here."/>
+
+<meta property="og:title" content="Avoiding Stringly Typed" />
+<meta property="og:description" content="There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:
+interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://SimY4.github.io/posts/002-avoiding-stringly-typed/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-24T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://SimY4.github.io/posts/002-avoiding-stringly-typed/">
+
+
+<link rel="preload" href="https://SimY4.github.io/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://SimY4.github.io/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://SimY4.github.io/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://SimY4.github.io/site.webmanifest">
+<link rel="mask-icon" href="https://SimY4.github.io/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.109.0">
+
+
+
+
+
+  </head>
+
+
+
+
+<body class="preload-transitions colorscheme-light">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://SimY4.github.io/">
+      My personal space
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://SimY4.github.io/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://SimY4.github.io/index.xml">RSS</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://SimY4.github.io/posts/002-avoiding-stringly-typed/">
+              Avoiding Stringly Typed
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2022-02-24T00:00:00Z">
+                February 24, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="https://SimY4.github.io/categories/dev-blog/">dev-blog</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://SimY4.github.io/tags/java/">java</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input.
+So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">EmailSender</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#902000">void</span> <span style="color:#06287e">sendEmail</span><span style="color:#666">(</span>String from<span style="color:#666">,</span> String to<span style="color:#666">,</span> String subject<span style="color:#666">,</span> String body<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span></code></pre></div><p>there’s an obvious ambiguity in the type signature here. All of the arguments are of the same type and can be easily misplaced.
+Not to mention that any string is accepted as a valid input that, as it seems, suppose to only be a valid email.</p>
+<p>In relation to the first problem, languages like Scala and Kotlin let you choose to pass arguments by name which improves the situation a little bit.
+Depending on how stable your API contracts are you may choose to rely on argument names.
+But with one downside of whenever you have to interop with Java the ability to pass arguments by name disappear because compiler artifacts produced by javac don&rsquo;t preserve argument names by default.</p>
+<p>Ok, so what about the second problem?</p>
+<div class="notice tip">
+  <div class="notice-title">
+    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>Tip
+  </div>
+  <div class="notice-content">You can enablejavac to store method argument names by passing the -parameters compiler flag. Scala can honour the additional info and will let you use named arguments. Kotlin unfortunately ignores this metadata and won’t let you do it either way.</div>
+</div>
+
+<h2 id="refined-types">
+  Refined types
+  <a class="heading-link" href="#refined-types">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Though some other languages have nicer ways to define type refinements, the most straightforward way to narrow down the set of acceptable incoming arguments in Java is by introducing a value-based class.
+The idea is quite simple: you can take the tainted value and lift it into a class instance that can only carry valid inputs or produce an error with details about why this refinement fails. Here’s what refined email type may look like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Email</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">private</span> String email<span style="color:#666">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">// conventional method name
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#007020;font-weight:bold">public</span> <span style="color:#007020;font-weight:bold">static</span> Email <span style="color:#06287e">valueOf</span><span style="color:#666">(</span>String tainted<span style="color:#666">)</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#666">(!</span>tainted<span style="color:#666">.</span><span style="color:#4070a0">matches</span><span style="color:#666">(</span><span style="color:#4070a0">&#34;.+@.+&#34;</span><span style="color:#666">))</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#007020;font-weight:bold">throw</span> <span style="color:#007020;font-weight:bold">new</span> IllegalArgumentException<span style="color:#666">(</span><span style="color:#4070a0">&#34;Malformed email: &#34;</span> <span style="color:#666">+</span> tainted<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020;font-weight:bold">new</span> Email<span style="color:#666">(</span>tainted<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">private</span> <span style="color:#06287e">Email</span><span style="color:#666">(</span>String email<span style="color:#666">)</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">this</span><span style="color:#666">.</span><span style="color:#4070a0">email</span> <span style="color:#666">=</span> email<span style="color:#666">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555;font-weight:bold">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">public</span> String <span style="color:#06287e">toString</span><span style="color:#666">()</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> email<span style="color:#666">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">EmailSender</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#902000">void</span> <span style="color:#06287e">sendEmail</span><span style="color:#666">(</span>Email from<span style="color:#666">,</span> Email to<span style="color:#666">,</span> String subject<span style="color:#666">,</span> String body<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span></code></pre></div><p>This won’t make the problem suddenly go away but it will push it further out to the boundaries of your system where all these constraints were supposed to be checked anyways which is a great plus.
+Suddenly there’s no way you can accidentally carry incorrect data across the system.
+You can get rid of the unnecessary validation steps at arbitrary points in your system just to make sure that you’re passing the arguments in the right format.
+Which will in turn simplify the number of testing scenarios you need to maintain - there’s no way you can pass an incorrect email to the function that accepts refined email type.</p>
+<p>But there are some downsides. Let’s go through them one by one and see what we can do about them.</p>
+<h3 id="unnecessary-boxing">
+  Unnecessary boxing
+  <a class="heading-link" href="#unnecessary-boxing">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>I’m going to discuss this really quickly because this is the first thing people usually talk about when considering using these patterns in practice.
+Though it might not always be possible for the JIT to optimize away the unnecessarily boxed String instance, I doubt that many of us are solving problems that are going to have type boxing as a bottleneck in their system.
+For those who do: we’re all hoping for project Valhalla to bring us zero-cost type refinements really really soon.</p>
+<h3 id="packing-and-unpacking-hassle">
+  Packing and Unpacking hassle
+  <a class="heading-link" href="#packing-and-unpacking-hassle">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>For some problems, it could be a hassle to pack and unpack your types so you can use your refined types with APIs from the standard library. Consider two options of defining a complex entity factory method that will let you create it out of smaller chunks of refined data:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Local</span> <span style="color:#666">{</span> <span style="color:#60a0b0;font-style:italic">/* refined email local part. Usually case-sensitive */</span> <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Domain</span> <span style="color:#666">{</span> <span style="color:#60a0b0;font-style:italic">/* refined email domain. Usually case-insensitive */</span> <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Email</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">// option A
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#007020;font-weight:bold">public</span> <span style="color:#007020;font-weight:bold">static</span> Email <span style="color:#06287e">from</span><span style="color:#666">(</span>Local local<span style="color:#666">,</span> Domain domain<span style="color:#666">)</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020;font-weight:bold">new</span> Email<span style="color:#666">(</span>local<span style="color:#666">.</span><span style="color:#4070a0">toString</span><span style="color:#666">()</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34;@&#34;</span> <span style="color:#666">+</span> domain<span style="color:#666">.</span><span style="color:#4070a0">toString</span><span style="color:#666">());</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">// option B
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#007020;font-weight:bold">public</span> <span style="color:#007020;font-weight:bold">static</span> Email <span style="color:#06287e">from</span><span style="color:#666">(</span>String local<span style="color:#666">,</span> String domain<span style="color:#666">)</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020;font-weight:bold">new</span> Email<span style="color:#666">(</span>Local<span style="color:#666">.</span><span style="color:#4070a0">valueOf</span><span style="color:#666">(</span>local<span style="color:#666">)</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34;@&#34;</span> <span style="color:#666">+</span> Domain<span style="color:#666">.</span><span style="color:#4070a0">valueOf</span><span style="color:#666">(</span>domain<span style="color:#666">));</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#666">}</span>
+</span></span></code></pre></div><p>Regardless of what you chose you’ll unavoidably force more <code>.valueOf(String)</code> and <code>.toString()</code> method usages across all of your codebases.
+This is not a great thing because these methods aren’t carrying any useful implementation detail - they are just making types align with each other.
+Plus it won’t cover cases where you already have the value of some refined components and you just need to add another one.</p>
+<p>The solution to this problem is to find a good common ground between your refinements and the rest of the APIs that might not want to think in terms of refinements.
+Sometimes it can be achieved by providing more implementation to standard library interfaces.
+Some great candidates that eliminate quite a lot of reasons for unpacking are <code>java.lang.Number</code> interface if you’re refining a numeric type, <code>java.lang.CharSequence</code> if you’re refining string type, <code>java.lang.Comparable</code> if your refinement has universal comparison rules.
+Having those implementations will eliminate a decent chunk of packing and unpacking reasons and make your codebase focused on actual argument passing and calling APIs directly on them.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Local</span> <span style="color:#007020;font-weight:bold">implements</span> CharSequence<span style="color:#666">,</span> Comparable<span style="color:#666">&lt;</span>Local<span style="color:#666">&gt;</span> <span style="color:#666">{</span> <span style="color:#666">...</span> <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Domain</span> <span style="color:#007020;font-weight:bold">implements</span> CharSequence<span style="color:#666">,</span> Comparable<span style="color:#666">&lt;</span>Domain<span style="color:#666">&gt;</span> <span style="color:#666">{</span> <span style="color:#666">...</span> <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span> <span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">Email</span> <span style="color:#007020;font-weight:bold">implements</span> CharSequence<span style="color:#666">,</span> Comparable<span style="color:#666">&lt;</span>Email<span style="color:#666">&gt;</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">public</span> <span style="color:#007020;font-weight:bold">static</span> Email <span style="color:#06287e">from</span><span style="color:#666">(</span>CharSequence local<span style="color:#666">,</span> CharSequence domain<span style="color:#666">)</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#666">(!(</span>local <span style="color:#007020;font-weight:bold">instanceof</span> Local<span style="color:#666">))</span> Local<span style="color:#666">.</span><span style="color:#4070a0">valueOf</span><span style="color:#666">(</span>local<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#666">(!(</span>domain <span style="color:#007020;font-weight:bold">instanceof</span> Domain<span style="color:#666">))</span> Domain<span style="color:#666">.</span><span style="color:#4070a0">valueOf</span><span style="color:#666">(</span>domain<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020;font-weight:bold">new</span> Email<span style="color:#666">(</span>local <span style="color:#666">+</span> <span style="color:#4070a0">&#34;@&#34;</span> <span style="color:#666">+</span> domain<span style="color:#666">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span></code></pre></div><p>You’ll be surprised how many standard java APIs are willing to work on <code>CharSequence</code> and not on <code>String</code> directly. And since most of the type refinements are implemented by delegating to underlying string instance, implementing all these contracts is very trivial.</p>
+<h2 id="in-conclusion">
+  In conclusion
+  <a class="heading-link" href="#in-conclusion">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Some of these proposed steps were retrofitted into the principles on which principled-ari-java library in one of the recent library releases. Totally worth the effort. If you were delaying introducing refined types in your codebase for one of the reasons above, I hope I was able to give you more reasons to reconsider. If there are still obstacles in adopting refines in your codebase that I didn’t think of, please let me know, I’ll think of something to make to work for your case also.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script>
+  window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "actinglikecrazy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    
+    document.addEventListener('themeChanged', function (e) { 
+        if (document.readyState == 'complete') {
+          DISQUS.reset({ reload: true, config: disqus_config });
+        }
+    });
+</script>
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Alex Simkin 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://SimY4.github.io/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

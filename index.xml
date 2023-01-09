@@ -6,61 +6,15 @@
     <description>Recent content on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Applicative functor</title>
-      <link>https://SimY4.github.io/posts/007-applicative-functor/</link>
-      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+      <title>Avoiding Stringly Typed</title>
+      <link>https://SimY4.github.io/posts/002-avoiding-stringly-typed/</link>
+      <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://SimY4.github.io/posts/007-applicative-functor/</guid>
-      <description>We now have two of the most powerful abstractions in our hands - Monad and Functor. And we can do a lot with having just that. But at a certain point, they may still seem a little bit limited to you. The questions that may ask yourself is: how can I structure my code to be able to compose multiple effects running in parallel? Let&amp;rsquo;s see if what we can do with functors and monads first.</description>
-    </item>
-    
-    <item>
-      <title>Mapping between categories</title>
-      <link>https://SimY4.github.io/posts/006-mapping-between-categories/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/006-mapping-between-categories/</guid>
-      <description>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow. And some of them actually can. Today we&amp;rsquo;re going to talk about functors which is a mapping between two categories: Category[A] =&amp;gt; Category[B]. In order to map one category to another, we need to map all the objects and arrows of the original category. Using the model of category from the previous post we can define a functor like so:</description>
-    </item>
-    
-    <item>
-      <title>Brief introduction to Category theory</title>
-      <link>https://SimY4.github.io/posts/005-brief-introduction-to-ct/</link>
-      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/005-brief-introduction-to-ct/</guid>
-      <description>Let&amp;rsquo;s briefly talk about Category theory. Category theory is a branch of set theory where the focus was shifted on relationships between sets rather than sets themselves. So, in category theory, we say that all sets are an atomic object that we can&amp;rsquo;t look into and all relationships between sets are arrows that go from one atomic object to another with a few extra rules. First, all objects must have at least one identity arrow id: A -&amp;gt; A that starts and ends on the same object.</description>
-    </item>
-    
-    <item>
-      <title>Kleisli composition</title>
-      <link>https://SimY4.github.io/posts/004-kleisli-composition/</link>
-      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/004-kleisli-composition/</guid>
-      <description>So say, we moved all of our side-effects into a nice exclict effects space, and we ended up having all these boilerplate for unpacking and inspecting the internal state of our effects in order to proceed further:
-val maybeUser: Option[User] = getUserById(UserId(1)) val maybeAccountId: Option[AccountId] = maybeUser match { case Some(user) =&amp;gt; getUserAccountId(user) case None =&amp;gt; None } val maybeUserAccount: Option[UserAccount] = maybeAccountId match { case Some(accountId) =&amp;gt; getAccount(accountId) case None =&amp;gt; None } There&amp;rsquo;s a lot of friction here to compose these types together and it&amp;rsquo;s very hard to follow what this code actually intended to do.</description>
-    </item>
-    
-    <item>
-      <title>Effects and side-effects</title>
-      <link>https://SimY4.github.io/posts/003-effects-and-sideeffects/</link>
-      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/003-effects-and-sideeffects/</guid>
-      <description>So, to satisfy the property of referential transparency we need to keep our code free from any side-effects. One of the ways to achieve this is by lifting all side-effects into an effect. What is an effect in functional programming? Effect is a result of a function that isn&amp;rsquo;t pure. So, what&amp;rsquo;s a pure function then? A pure function is a function where the return value is determined only by its input arguments.</description>
-    </item>
-    
-    <item>
-      <title>Referential transparency</title>
-      <link>https://SimY4.github.io/posts/002-referential-transparency/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/002-referential-transparency/</guid>
-      <description>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It means that an expression always evaluates to the same result in any context. What it gives us is the ease of equational reasoning about our programs as we used to do in math.
-2 + (2 * 2) === 2 + 4 === 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
+      <guid>https://SimY4.github.io/posts/002-avoiding-stringly-typed/</guid>
+      <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:
+interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
     </item>
     
     <item>
