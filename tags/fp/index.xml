@@ -9,15 +9,6 @@
     <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/tags/fp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monads Explained</title>
-      <link>https://SimY4.github.io/posts/002-cross-compiling-scala-in-gradle-project/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://SimY4.github.io/posts/002-cross-compiling-scala-in-gradle-project/</guid>
-      <description>It&amp;rsquo;s very common for a Scala project to provide multiple binary artefacts compiled against several versions of Scala compiler. And probab Для Scala проектов довольно распространённым является предоставление бинарных артефактов скомпилированных под несколько версий Scala компилятора. Как правило для целей создания нескольких версий одного артефакта в сообществе принято использовать SBT, где эта возможность есть прямо из коробки и настраивается в пару строк. Но что если мы хотим заморочится и создать билд для кросс компиляции не используя SBT?</description>
-    </item>
-    
-    <item>
-      <title>Monads Explained</title>
       <link>https://SimY4.github.io/posts/002-monads-explained/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
       
