@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Monads Explained · My personal space
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Alex Simkin">
+<meta name="description" content="Referential transparency Link to heading Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.
+2 &#43; (2 * 2) === 2 &#43; 4 === 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Monads Explained"/>
+<meta name="twitter:description" content="Referential transparency Link to heading Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.
+2 &#43; (2 * 2) === 2 &#43; 4 === 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments."/>
+
+<meta property="og:title" content="Monads Explained" />
+<meta property="og:description" content="Referential transparency Link to heading Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.
+2 &#43; (2 * 2) === 2 &#43; 4 === 6 &#34;Hello&#34; &#43; &#34; &#34; &#43; &#34;world&#34; === &#34;Hello &#34; &#43; &#34;world&#34; === &#34;Hello&#34; &#43; &#34; world&#34; === &#34;Hello world&#34; List(1, 2, 3) &#43;&#43; List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://SimY4.github.io/posts/002-monads-explained/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-02-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-02-01T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://SimY4.github.io/posts/002-monads-explained/">
+
+
+<link rel="preload" href="https://SimY4.github.io/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.36f76aaf39a14ecf5c3a3c6250dcaf06c238b3d8365d17d646f95cb1874e852b.css" integrity="sha256-NvdqrzmhTs9cOjxiUNyvBsI4s9g2XRfWRvlcsYdOhSs=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.216e36d3eaf6f4cdfd67dc1200c49a8169e6478102977b3e9ac51a064c57054c.css" integrity="sha256-IW420&#43;r29M39Z9wSAMSagWnmR4ECl3s&#43;msUaBkxXBUw=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://SimY4.github.io/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://SimY4.github.io/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://SimY4.github.io/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://SimY4.github.io/site.webmanifest">
+<link rel="mask-icon" href="https://SimY4.github.io/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.109.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://SimY4.github.io/">
+      My personal space
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://SimY4.github.io/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://SimY4.github.io/index.xml">RSS</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://SimY4.github.io/posts/002-monads-explained/">
+              Monads Explained
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2019-02-01T00:00:00Z">
+                February 1, 2019
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              9-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="https://SimY4.github.io/categories/dev-blog/">dev-blog</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://SimY4.github.io/tags/fp/">fp</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="referential-transparency">
+  Referential transparency
+  <a class="heading-link" href="#referential-transparency">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs.
+It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#40a070">2</span> <span style="color:#666">+</span> <span style="color:#666">(</span><span style="color:#40a070">2</span> <span style="color:#666">*</span> <span style="color:#40a070">2</span><span style="color:#666">)</span> <span style="color:#666">===</span> <span style="color:#40a070">2</span> <span style="color:#666">+</span> <span style="color:#40a070">4</span> <span style="color:#666">===</span> <span style="color:#40a070">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#4070a0">&#34;Hello&#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34; &#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34;world&#34;</span> <span style="color:#666">===</span> <span style="color:#4070a0">&#34;Hello &#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34;world&#34;</span> <span style="color:#666">===</span> <span style="color:#4070a0">&#34;Hello&#34;</span> <span style="color:#666">+</span> <span style="color:#4070a0">&#34; world&#34;</span> <span style="color:#666">===</span> <span style="color:#4070a0">&#34;Hello world&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">)</span> <span style="color:#666">++</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">4</span><span style="color:#666">,</span> <span style="color:#40a070">5</span><span style="color:#666">,</span> <span style="color:#40a070">6</span><span style="color:#666">)</span> <span style="color:#666">===</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">,</span> <span style="color:#40a070">4</span><span style="color:#666">,</span> <span style="color:#40a070">5</span><span style="color:#666">,</span> <span style="color:#40a070">6</span><span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span>g<span style="color:#666">(</span>f<span style="color:#666">(</span>a<span style="color:#666">))</span> <span style="color:#666">===</span> <span style="color:#666">(</span>g compose f<span style="color:#666">)(</span>a<span style="color:#666">)</span>
+</span></span></code></pre></div><p>If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.
+For example, JIT can perform dead code elimination which can evaluate arithmetic expressions into a constant value or interpolate string literals or get rid of staged builders.
+But some fragments they are not allowed to optimise just because they can&rsquo;t prove that this change will not break code&rsquo;s original semantics.
+So not only making our code referentially transparent give us better code readability but also it helps the compiler to perform certain optimisations that can make your code more performant.</p>
+<p>So, why something can be non-referentially transparent? Well, basically every expression containing side-effect or mutable state breaks the property of referential transparency.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> iterator <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">,</span> <span style="color:#40a070">2</span><span style="color:#666">,</span> <span style="color:#40a070">3</span><span style="color:#666">).</span>iterator
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> next <span style="color:#007020;font-weight:bold">=</span> iterator<span style="color:#666">.</span>next
+</span></span><span style="display:flex;"><span>next <span style="color:#666">+</span> next <span style="color:#666">=!=</span> iterator<span style="color:#666">.</span>next <span style="color:#666">+</span> iterator<span style="color:#666">.</span>next
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">scala.concurrent._</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">ExecutionContext.Implicits.global</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">scala.concurrent.duration._</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">scala.io.StdIn._</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> readNumber <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">Await</span><span style="color:#666">.</span>result<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">Future</span> <span style="color:#666">{</span> readLine<span style="color:#666">(</span><span style="color:#4070a0">&#34;Give me a number&gt;&#34;</span><span style="color:#666">).</span>toInt <span style="color:#666">},</span> <span style="color:#40a070">10.</span>seconds<span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> number <span style="color:#007020;font-weight:bold">=</span> readNumber
+</span></span><span style="display:flex;"><span>number <span style="color:#666">+</span> number <span style="color:#666">=!=</span> readNumber <span style="color:#666">+</span> readNumber
+</span></span></code></pre></div><p>You may wonder, how can our programs do anything useful without being able to perform side-effects? Well, let&rsquo;s talk about effects and side effects.</p>
+<h2 id="effects-and-side-effects">
+  Effects and side-effects
+  <a class="heading-link" href="#effects-and-side-effects">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>So, to satisfy the property of referential transparency the programmer needs to keep the code free from any side-effects. One of the ways to achieve this is by lifting all side-effects into an effect.
+What is an effect in functional programming? Effect is a result of a function that simply isn&rsquo;t pure. So, what&rsquo;s a pure function then? A pure function is a function where the return value is determined only by its input arguments.
+A few examples of pure functions are:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> identity<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=</span> a
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> min<span style="color:#666">(</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Long</span><span style="color:#666">,</span> b<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Long</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Long</span> <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">if</span> <span style="color:#666">(</span>a <span style="color:#666">&lt;</span> b<span style="color:#666">)</span> a <span style="color:#007020;font-weight:bold">else</span> b
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> reverse<span style="color:#666">(</span>s<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">String</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">String</span> <span style="color:#666">=</span> s<span style="color:#666">.</span>foldLeft<span style="color:#666">(</span><span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">)</span> <span style="color:#666">{</span> <span style="color:#666">(</span>acc<span style="color:#666">,</span> ch<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> ch <span style="color:#666">+</span> acc <span style="color:#666">}</span>
+</span></span></code></pre></div><p>And what&rsquo;s are effectful functions then? We can call any function in the form of <code>A =&gt; F[B]</code> where <code>F</code> is a container that encodes the possibility of the function to perform some sort of effectful action
+(i.e. return abnormally by throwing an exception, produce some output, etc). Keep in mind that having an effect as a return type doesn&rsquo;t give us the right to break referential transparency
+(for example <code>scala.concurrent.Future</code> look like a suitable type, it&rsquo;s by design not referentially transparent therefore can&rsquo;t be used to represent pure FP effects).
+Some examples of standard effects and effectful functions are:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> div<span style="color:#666">(</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Int</span><span style="color:#666">,</span> b<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Int</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">Int</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> b <span style="color:#007020;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">case</span> <span style="color:#40a070">0</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">case</span> <span style="color:#007020;font-weight:bold">_</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Some</span><span style="color:#666">(</span>a <span style="color:#666">/</span> b<span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">//          F[B] is Either[String, B]
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">//                    \/
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">def</span> toInt<span style="color:#666">(</span>s<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">String</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Either</span><span style="color:#666">[</span><span style="color:#902000">String</span>, <span style="color:#902000">Int</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> s<span style="color:#666">.</span>toIntOption<span style="color:#666">.</span>toRight<span style="color:#666">(</span><span style="color:#4070a0">&#34;NaN&#34;</span><span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> range<span style="color:#666">(</span>i<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Int</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">List</span><span style="color:#666">[</span><span style="color:#902000">Int</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">List</span><span style="color:#666">.</span>range<span style="color:#666">(</span><span style="color:#40a070">0</span><span style="color:#666">,</span> i<span style="color:#666">)</span> <span style="color:#60a0b0;font-style:italic">// &lt;- list is effect too
+</span></span></span></code></pre></div><p>The major problem with effectful return types is that the standard rule of functional composition can&rsquo;t be applied to them.
+You can easily compose functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to get the function <code>A =&gt; C</code> but you can&rsquo;t compose effectful functions <code>A =&gt; F[B]</code> and <code>B =&gt; F[C]</code>. Or can you?</p>
+<h2 id="kleisli-composition">
+  Kleisli composition
+  <a class="heading-link" href="#kleisli-composition">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>So say, we moved all of our side-effects into a nice exclict effects space, and we ended up having all these boilerplate for unpacking and inspecting the internal state of our effects in order to proceed further:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> maybeUser<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">User</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> getUserById<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">UserId</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> maybeAccountId<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">AccountId</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> maybeUser <span style="color:#007020;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">Some</span><span style="color:#666">(</span>user<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> getUserAccountId<span style="color:#666">(</span>user<span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">None</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> maybeUserAccount<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Option</span><span style="color:#666">[</span><span style="color:#902000">UserAccount</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> maybeAccountId <span style="color:#007020;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">Some</span><span style="color:#666">(</span>accountId<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> getAccount<span style="color:#666">(</span>accountId<span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">None</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">None</span>
+</span></span></code></pre></div><p>There&rsquo;s a lot of friction here to compose these types together and it&rsquo;s very hard to follow what this code actually intended to do.
+What if we can add an abstraction that could hide all this boilerplate from us? Let&rsquo;s try to figure something out.
+We can define a trait for the composition of two effectful functions. It&rsquo;ll have just one method that&rsquo;ll look like a fancy arrow (or fish arrow,
+depending on how you look at it):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Fancy</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#0e84b5;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>fab<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span> <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;=&gt;[</span><span style="color:#902000">C</span><span style="color:#666">](</span>fbc<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">object</span> <span style="color:#0e84b5;font-weight:bold">Fancy</span><span style="color:#007020;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#902000">given</span> <span style="color:#902000">Fancy</span><span style="color:#666">[</span><span style="color:#902000">Option</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">with</span>
+</span></span><span style="display:flex;"><span>    extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>fab<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Option</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;=&gt;[</span><span style="color:#902000">C</span><span style="color:#666">](</span>fbc<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Option</span><span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Option</span><span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#666">{</span> a <span style="color:#007020;font-weight:bold">=&gt;</span> 
+</span></span><span style="display:flex;"><span>        fab<span style="color:#666">(</span>a<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">Some</span><span style="color:#666">(</span>b<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">=&gt;</span> fbc<span style="color:#666">(</span>b<span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#007020;font-weight:bold">case</span> <span style="color:#0e84b5;font-weight:bold">None</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#666">}</span>
+</span></span></code></pre></div><p>Having these definitions in place we can rewrite our code into something like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">val</span> getAccount<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">UserId</span> <span style="color:#666">=&gt;</span> <span style="color:#0e84b5;font-weight:bold">Option</span><span style="color:#666">[</span><span style="color:#902000">UserAccount</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> getUserById <span style="color:#666">&gt;=&gt;</span> getUserId <span style="color:#666">&gt;=&gt;</span> getUserAccount
+</span></span><span style="display:flex;"><span>getAccount<span style="color:#666">(</span><span style="color:#0e84b5;font-weight:bold">UserId</span><span style="color:#666">(</span><span style="color:#40a070">1</span><span style="color:#666">))</span>
+</span></span></code></pre></div><p>It seems that our fancy arrow gives us the missing ability to compose functions of shape <code>A =&gt; F[B]</code> in the same way as we used to compose pure functions.
+And it turns out that this composition that we just came up with, is well known in a branch of mathematics called category theory and is called Kleisli composition
+(named after mathematician <a href="https://en.wikipedia.org/wiki/Heinrich_Kleisli" title="wiki: Heinrich Kleisli">Heinrich Kleisli</a>).
+Our fancy arrow is called Kleisli arrow and as long as they are pure, and referentially transparent they form the Kleisli category.</p>
+<h2 id="brief-introduction-to-category-theory">
+  Brief introduction to Category theory
+  <a class="heading-link" href="#brief-introduction-to-category-theory">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Let&rsquo;s briefly talk about Category theory. Category theory is a branch of set theory where the focus was shifted on relationships between sets rather than sets themselves.
+So, in category theory, we say that all sets are an atomic object that we can&rsquo;t look into and all relationships between sets are arrows that go from one atomic object to another with a few extra rules.
+First, all objects must have at least one identity arrow <code>id: A =&gt; A</code> that starts and ends on the same object.
+Second, all arrows have to be composable, meaning that if you have two arrows <code>f: A =&gt; B</code> and <code>g: B =&gt; C</code> there should always be at least one arrow <code>g . f: A =&gt; C</code> and
+these compositions must be associative (<code>(f . g) . h == f . (g . h)</code>). It&rsquo;s pretty much all we need to know at this point, having these rules we can model them in scala:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#902000">:=&gt;</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span>, <span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#0e84b5;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">def</span> id<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#902000">:=&gt;</span> <span style="color:#902000">A</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#902000">:=&gt;</span> <span style="color:#902000">B</span><span style="color:#666">)</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> compose<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">](</span>g<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#902000">:=&gt;</span> <span style="color:#902000">C</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#902000">:=&gt;</span> <span style="color:#902000">C</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">object</span> <span style="color:#0e84b5;font-weight:bold">Category</span> <span style="color:#007020;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances0</span> <span style="color:#007020;font-weight:bold">with</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances1</span>
+</span></span></code></pre></div><p>Given this definition of a category, we can implement a few the most frequently used examples of categories:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances0</span><span style="color:#007020;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">// Function1 category instance
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  given <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#902000">Function1</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">with</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> id<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> A <span style="color:#007020;font-weight:bold">=</span> identity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> B<span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#007020;font-weight:bold">def</span> compose<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">](</span>g<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#666">=&gt;</span> C<span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> C <span style="color:#007020;font-weight:bold">=</span> g compose f
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">// Type hierarchy category instance
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">//      &lt;:&lt;[-A, +B] is an standard type evidence that A is a subtype of B
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">//             \/
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  given <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">&lt;:</span><span style="color:#902000">&lt;</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">with</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> id<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">&lt;:</span><span style="color:#902000">&lt;</span> <span style="color:#902000">A</span> <span style="color:#666">=</span> implicitly<span style="color:#666">[</span><span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">&lt;:</span><span style="color:#902000">&lt;</span> <span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#60a0b0;font-style:italic">// A is always a subtype of itself
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">&lt;:</span><span style="color:#902000">&lt;</span> <span style="color:#902000">B</span><span style="color:#666">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#007020;font-weight:bold">def</span> compose<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">](</span>g<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#007020;font-weight:bold">&lt;:</span><span style="color:#902000">&lt;</span> <span style="color:#902000">C</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">&lt;:</span><span style="color:#902000">&lt;</span> <span style="color:#902000">C</span>  <span style="color:#666">=</span> g compose f
+</span></span></code></pre></div><p>A category with a single object is called monoid. Now, let&rsquo;s try to define the Kleisli category in a generic way.
+To do this we&rsquo;ll need one extra helper trait with some standard scala plumbing to make it into a nice syntax.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Shmancy</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#0e84b5;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">def</span> pure<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span> <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;&gt;=(</span>fa<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">CategoryInstances1</span><span style="color:#007020;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#60a0b0;font-style:italic">// Kleisli category instance
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>  given <span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]](</span>using F<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Shmancy</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Category</span><span style="color:#666">[[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=&gt;</span><span style="color:#902000">&gt;</span> <span style="color:#902000">A</span> <span style="color:#007020;font-weight:bold">=&gt;</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]]</span> <span style="color:#007020;font-weight:bold">with</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> id<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> F<span style="color:#666">.</span>pure
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#007020;font-weight:bold">def</span> compose<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">](</span>g<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">B</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">C</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> a <span style="color:#007020;font-weight:bold">=&gt;</span> g <span style="color:#666">&gt;&gt;=</span> f<span style="color:#666">(</span>a<span style="color:#666">)</span>
+</span></span></code></pre></div><p>Here we are. So, to make things compose in Kleisly category we need only two things, a function that can lift a pure value into an effect <code>F[_]</code>
+and a binding function that can apply function <code>A =&gt; F[B]</code> to <code>F[A]</code>. This definition is called a monad.</p>
+<h2 id="mapping-between-categories">
+  Mapping between categories
+  <a class="heading-link" href="#mapping-between-categories">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>So, once we defined a category and played with them a little bit we start wondering if categories can themselves be mapped somehow.
+And some of them actually can. Today we&rsquo;re going to talk about functors which is a mapping between two categories: <code>Category[A] =&gt; Category[B]</code>.
+In order to map one category to another, we need to map all the objects and arrows of the original category.
+Using the model of category from the previous post we can define a functor like so:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Functor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#0e84b5;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">FromCat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">ToCat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">def</span> map<span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">FromCat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">])</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#666">(</span>using <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#902000">FromCat</span><span style="color:#666">],</span> <span style="color:#0e84b5;font-weight:bold">ToCat</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Category</span><span style="color:#666">[</span><span style="color:#902000">ToCat</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">ToCat</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span>, <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]]</span>
+</span></span></code></pre></div><p>Obviously, if we can map one category to another we can also map one category to itself. In this case, we call our functor an endofunctor (&rsquo;endo&rsquo; means the same).
+Most of the time when we use functors in Scala or Haskell we actually deal with endofunctors.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">EndoFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#0e84b5;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">Functor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">Cat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">override</span> <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">FromCat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">Cat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">override</span> <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">ToCat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">Cat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">def</span> mapEndo<span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Cat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">])</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#666">(</span>using <span style="color:#0e84b5;font-weight:bold">Category</span><span style="color:#666">[</span><span style="color:#902000">Cat</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">Cat</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span>, <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// given a function A -&gt; B and F[A], we can produce F[B] given that F[_] is an endofunctor
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">Function1EndoFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">EndoFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">Cat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> A <span style="color:#007020;font-weight:bold">=&gt;</span> B
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// if A &lt;:&lt; B then F[A] &lt;:&lt; F[B] given that F[_] is an endofunctor
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">TypeHierarchyEndoFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#0e84b5;font-weight:bold">EndoFunctor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span> <span style="color:#666">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007020;font-weight:bold">type</span> <span style="color:#902000">Cat</span><span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> A <span style="color:#666">&lt;:&lt;</span> B
+</span></span><span style="display:flex;"><span><span style="color:#666">}</span>
+</span></span></code></pre></div><p><code>Function1EndoFunctor</code> and <code>TypeHierarchyEndoFunctor</code> are also called covariant functors because they preserve the direction of arrows.
+If in the resulting category the arrows go in the opposite way such functor is called contravariant functor.
+Now, since we kinda already know that functions and types form a category, we can remove the <code>Category[Function1]</code> instance evidence from
+<code>Function1EndoFunctor</code> to obtain a quite familiar definition of a functor:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// Actually it&#39;s endofunctor
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">//         \/
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Functor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span><span style="color:#0e84b5;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> B<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">def</span> map<span style="color:#666">(</span>fa<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span></code></pre></div><p>And the definition on a monad we came up with in the last blog post is sufficient to derive a functor for it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">trait</span> <span style="color:#0e84b5;font-weight:bold">Monad</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#007020;font-weight:bold">_</span><span style="color:#666">]]</span> <span style="color:#0e84b5;font-weight:bold">extends</span> <span style="color:#0e84b5;font-weight:bold">Functor</span><span style="color:#666">[</span><span style="color:#902000">F</span><span style="color:#666">]</span><span style="color:#007020;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#902000">def</span> <span style="color:#902000">pure</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">](</span>a<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span><span style="color:#666">)</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>  extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> F<span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">])</span> <span style="color:#007020;font-weight:bold">def</span> <span style="color:#666">&gt;&gt;=(</span>fa<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span>
+</span></span><span style="display:flex;"><span>  extension <span style="color:#666">[</span><span style="color:#902000">A</span>, <span style="color:#902000">B</span><span style="color:#666">](</span>f<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">A</span> <span style="color:#666">=&gt;</span> B<span style="color:#666">)</span> <span style="color:#007020;font-weight:bold">def</span> map<span style="color:#666">(</span>fa<span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">A</span><span style="color:#666">])</span><span style="color:#007020;font-weight:bold">:</span> <span style="color:#902000">F</span><span style="color:#666">[</span><span style="color:#902000">B</span><span style="color:#666">]</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#666">(</span>f andThen pure<span style="color:#666">)</span> <span style="color:#666">&gt;&gt;=</span> fa 
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script>
+  window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "actinglikecrazy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    
+    document.addEventListener('themeChanged', function (e) { 
+        if (document.readyState == 'complete') {
+          DISQUS.reset({ reload: true, config: disqus_config });
+        }
+    });
+</script>
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2023
+     Alex Simkin 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://SimY4.github.io/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
