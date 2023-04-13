@@ -168,9 +168,9 @@
         
         <p>It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using <a href="https://www.scala-sbt.org/"  class="external-link" target="_blank" rel="noopener">SBT</a> where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?</p>
 <p>For one of my Java projects, I decided to create a Scala bridge. Historically, the entire project is built using <a href="https://gradle.org/"  class="external-link" target="_blank" rel="noopener">Gradle build tool</a> and it was decided to add the bridge to the same project as a separate submodule. Gradle provides basic Scala compilation support. It can build an artifact and bundle it with documentation and sources for any specific version of Scala compiler - everything you need, except cross-compilation. There is an open <a href="https://github.com/gradle/gradle/issues/3530"  class="external-link" target="_blank" rel="noopener">ticket</a> and a couple of plugins (<a href="https://github.com/ADTRAN/gradle-scala-multiversion-plugin"  class="external-link" target="_blank" rel="noopener">1</a>, <a href="https://github.com/prokod/gradle-crossbuild-scala"  class="external-link" target="_blank" rel="noopener">2</a>) focused on adding this support but current state of things is nowhere near to ease of use and convenience of SBT. So I decided to check for myself how hard it is to configure Gradle for Scala cross-compilation without special plugins or Gradle support.</p>
-<h2 id="desired-outcome">
-  Desired outcome
-  <a class="heading-link" href="#desired-outcome">
+<h2 id="wonder">
+  Wonder
+  <a class="heading-link" href="#wonder">
     <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
@@ -289,6 +289,7 @@
   </a>
 </h2>
 <p>The problem was solved, Gradle&rsquo;s flexibility was enough to quite elegantly express a very non-trivial setup, and Scala cross-building was proven to be possible not only using SBT, and if for one reason or another you use Gradle to build a Scala project, cross-compilation as an opportunity for you is also available.</p>
+<p><a href="https://github.com/SimY4/xpath-to-xml/tree/2.x/xpath-to-xml-scala"  class="external-link" target="_blank" rel="noopener">Project GitHub link</a> if you want to reproduce this explore yourself.</p>
 
       </div>
 
