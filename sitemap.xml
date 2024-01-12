@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</loc>
+    <loc>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</loc>
     <lastmod>2022-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://SimY4.github.io/categories/</loc>
@@ -23,6 +23,12 @@
     <loc>https://SimY4.github.io/tags/</loc>
     <lastmod>2022-02-24T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</loc>
+    <lastmod>2021-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/tags/fp/</loc>
+    <lastmod>2021-07-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</loc>
     <lastmod>2019-05-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -31,9 +37,6 @@
   </url><url>
     <loc>https://SimY4.github.io/tags/scala/</loc>
     <lastmod>2019-05-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://SimY4.github.io/tags/fp/</loc>
-    <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://SimY4.github.io/posts/002-monads-explained/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>

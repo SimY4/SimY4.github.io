@@ -16,6 +16,13 @@
       <description></description>
     </item>
     <item>
+      <title>fp</title>
+      <link>https://SimY4.github.io/tags/fp/</link>
+      <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://SimY4.github.io/tags/fp/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>gradle</title>
       <link>https://SimY4.github.io/tags/gradle/</link>
       <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
@@ -27,13 +34,6 @@
       <link>https://SimY4.github.io/tags/scala/</link>
       <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
       <guid>https://SimY4.github.io/tags/scala/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>fp</title>
-      <link>https://SimY4.github.io/tags/fp/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://SimY4.github.io/tags/fp/</guid>
       <description></description>
     </item>
   </channel>

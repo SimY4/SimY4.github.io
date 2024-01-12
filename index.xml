@@ -10,10 +10,17 @@
     <atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Avoiding Stringly Typed</title>
-      <link>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</link>
+      <link>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</guid>
+      <guid>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</guid>
       <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&#xA;interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
+    </item>
+    <item>
+      <title>Consistency: There and Back Again</title>
+      <link>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</link>
+      <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</guid>
+      <description>What is Consistency token? Link to heading A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the ETag header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom Event-Stream-State request header(s) with the following format (as per standard RFC definition):</description>
     </item>
     <item>
       <title>Cross-Compiling Scala in Gradle project</title>
