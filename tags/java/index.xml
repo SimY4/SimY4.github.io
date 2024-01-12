@@ -6,16 +6,14 @@
     <description>Recent content in java on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://SimY4.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Avoiding Stringly Typed</title>
       <link>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</guid>
-      <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:
-interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
+      <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&#xA;interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
     </item>
-    
   </channel>
 </rss>

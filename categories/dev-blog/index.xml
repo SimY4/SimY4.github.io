@@ -6,35 +6,28 @@
     <description>Recent content in dev-blog on My personal space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/categories/dev-blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://SimY4.github.io/categories/dev-blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Avoiding Stringly Typed</title>
       <link>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://SimY4.github.io/posts/004-avoiding-stringly-typed/</guid>
-      <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:
-interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
+      <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&#xA;interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
     </item>
-    
     <item>
       <title>Cross-Compiling Scala in Gradle project</title>
       <link>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</link>
       <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</guid>
       <description>It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?</description>
     </item>
-    
     <item>
       <title>Monads Explained</title>
       <link>https://SimY4.github.io/posts/002-monads-explained/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://SimY4.github.io/posts/002-monads-explained/</guid>
-      <description>Referential transparency Link to heading Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.
-2 + (2 * 2) === 2 + 4 === 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
+      <description>Referential transparency Link to heading Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs. It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.&#xA;2 + (2 * 2) === 2 + 4 === 6 &amp;#34;Hello&amp;#34; + &amp;#34; &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello &amp;#34; + &amp;#34;world&amp;#34; === &amp;#34;Hello&amp;#34; + &amp;#34; world&amp;#34; === &amp;#34;Hello world&amp;#34; List(1, 2, 3) ++ List(4, 5, 6) === List(1, 2, 3, 4, 5, 6) g(f(a)) === (g compose f)(a) If you think about it, most of the modern compilers (non-FP included) can already do some optimisations for referentially transparent code fragments.</description>
     </item>
-    
   </channel>
 </rss>
