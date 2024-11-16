@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>scala on My personal space</title>
+    <title>Scala on My personal space</title>
     <link>https://SimY4.github.io/tags/scala/</link>
-    <description>Recent content in scala on My personal space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Scala on My personal space</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 20 May 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://SimY4.github.io/tags/scala/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</link>
       <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
       <guid>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</guid>
-      <description>It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?</description>
+      <description>&lt;p&gt;It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using &lt;a href=&#34;https://www.scala-sbt.org/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SBT&lt;/a&gt; where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

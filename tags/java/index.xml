@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on My personal space</title>
+    <title>Java on My personal space</title>
     <link>https://SimY4.github.io/tags/java/</link>
-    <description>Recent content in java on My personal space</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Java on My personal space</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://SimY4.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,14 @@
       <link>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</guid>
-      <description>There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input. So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&#xA;interface EmailSender { void sendEmail(String from, String to, String subject, String body); } there’s an obvious ambiguity in the type signature here.</description>
+      <description>&lt;p&gt;There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input.&#xA;So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;EmailSender&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;{&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#902000&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#06287e&#34;&gt;sendEmail&lt;/span&gt;(String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;from,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;to,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;subject,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;body);&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;there’s an obvious ambiguity in the type signature here. All of the arguments are of the same type and can be easily misplaced.&#xA;Not to mention that any string is accepted as a valid input that, as it seems, suppose to only be a valid email.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Consistency: There and Back Again</title>
       <link>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</link>
       <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
       <guid>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</guid>
-      <description>What is Consistency token? Link to heading A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the ETag header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom Event-Stream-State request header(s) with the following format (as per standard RFC definition):</description>
+      <description>&lt;h2 id=&#34;what-is-consistency-token&#34;&gt;&#xA;  What is Consistency token?&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#what-is-consistency-token&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the &lt;code&gt;ETag&lt;/code&gt; header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom &lt;code&gt;Event-Stream-State&lt;/code&gt; request header(s) with the following format (as per standard RFC definition):&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

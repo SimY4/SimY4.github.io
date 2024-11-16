@@ -16,16 +16,23 @@
 <meta name="description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
 <meta name="keywords" content="blog,developer,personal">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Cross-Compiling Scala in Gradle project"/>
-<meta name="twitter:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?"/>
 
-<meta property="og:title" content="Cross-Compiling Scala in Gradle project" />
-<meta property="og:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-05-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-05-20T00:00:00+00:00" />
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cross-Compiling Scala in Gradle project">
+  <meta name="twitter:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
+
+<meta property="og:url" content="https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/">
+  <meta property="og:site_name" content="My personal space">
+  <meta property="og:title" content="Cross-Compiling Scala in Gradle project">
+  <meta property="og:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-05-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-05-20T00:00:00+00:00">
+    <meta property="article:tag" content="Gradle">
+    <meta property="article:tag" content="Scala">
 
 
 
@@ -33,12 +40,14 @@
 <link rel="canonical" href="https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/">
 
 
-<link rel="preload" href="https://SimY4.github.io/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://SimY4.github.io/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://SimY4.github.io/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://SimY4.github.io/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
 
 
   
   
-  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.e1bdf152d93b060b06ba5d496486ed9c201a8b95d335e035beb5faebe3b61cad.css" integrity="sha256-4b3xUtk7BgsGul1JZIbtnCAai5XTNeA1vrX66&#43;O2HK0=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.aa5ef26fa979d6793724ae2dbd71efa94fd16cb1c5c7db3b6651f21f9892a5fd.css" integrity="sha256-ql7yb6l51nk3JK4tvXHvqU/RbLHFx9s7ZlHyH5iSpf0=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -87,7 +96,7 @@
   
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
@@ -95,27 +104,29 @@
   <main class="wrapper">
     <nav class="navigation">
   <section class="container">
+    
     <a class="navigation-title" href="https://SimY4.github.io/">
       My personal space
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://SimY4.github.io/about/">About</a>
+              <a class="navigation-link " href="https://SimY4.github.io/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://SimY4.github.io/posts/">Blog</a>
+              <a class="navigation-link " href="https://SimY4.github.io/posts/">Blog</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://SimY4.github.io/index.xml">RSS</a>
+              <a class="navigation-link " href="https://SimY4.github.io/index.xml">RSS</a>
             </li>
           
         
@@ -141,29 +152,29 @@
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
               <time datetime="2019-05-20T00:00:00Z">
                 May 20, 2019
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               4-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="https://SimY4.github.io/categories/dev-blog/">dev-blog</a></div>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="https://SimY4.github.io/categories/dev-blog/">Dev-Blog</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
     <span class="tag">
-      <a href="https://SimY4.github.io/tags/gradle/">gradle</a>
+      <a href="https://SimY4.github.io/tags/gradle/">Gradle</a>
     </span>
       <span class="separator">•</span>
     <span class="tag">
-      <a href="https://SimY4.github.io/tags/scala/">scala</a>
+      <a href="https://SimY4.github.io/tags/scala/">Scala</a>
     </span></div>
 
         </div>
@@ -176,20 +187,20 @@
 <h2 id="wonder">
   Wonder
   <a class="heading-link" href="#wonder">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
 <p>What I want is the same set of sources to be compiled for multiple versions of the Scala compiler: 2.11, 2.12 and 2.13. And since Scala 2.13 has a bunch of backward-incompatible changes to built-in collections, I would like to be able to add additional version-specific source sets for compiler-specific code. Again, it&rsquo;s a trivial task in SBT, let&rsquo;s see what we can do in Gradle:</p>
 <figure><img src="https://SimY4.github.io/images/posts/cross-compiling-scala-in-gradle-1.png"
-         alt="Initial Project Structure" width="600"/>
+    alt="Initial Project Structure" width="600">
 </figure>
 
 <p>The first difficulty to face is that the compiler version is calculated from the declared scala-library dependency version. In addition to that, all dependencies that are prefixed with the Scala compiler version in their GAV coordinates also need to be changed. And then, the set of compiler flags also differs from one compiler version to another: some flags have been renamed, while others have simply been deprecated or even removed entirely. I decided that trying to capture all the nuances of different compilers in one build file seems like a painfully difficult task and even more difficult to maintain it. Therefore, I decided to explore possible other ways to solve this problem. What if we create multiple configuration builds for the same project directory structure?</p>
 <h2 id="explore">
   Explore
   <a class="heading-link" href="#explore">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
@@ -282,14 +293,14 @@
 </details>
 <p>The final structure looks like this:</p>
 <figure><img src="https://SimY4.github.io/images/posts/cross-compiling-scala-in-gradle-2.png"
-         alt="Final Project Structure" width="600"/>
+    alt="Final Project Structure" width="600">
 </figure>
 
 <p>Here you can also extract individual common configuration pieces in external configuration files and import them into the build in order to reduce the number of repetitions. But for me it turned out well anyway, declarative, isolated and compatible with all possible Gradle plugins.</p>
 <h2 id="outcome">
   Outcome
   <a class="heading-link" href="#outcome">
-    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
@@ -331,6 +342,8 @@
         
         
         
+        
+        
       </footer>
     </article>
 
@@ -367,6 +380,8 @@
 
   
 
+
+  
 
   
 
