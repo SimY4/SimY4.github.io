@@ -2,28 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://SimY4.github.io/categories/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/categories/dev-blog/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/tags/java/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/posts/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/tags/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/posts/006-we-began-to-forget-public-morozov-anti-pattern/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://SimY4.github.io/tags/we-began-to-forget/</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://SimY4.github.io/about/</loc>
     <lastmod>2024-01-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://SimY4.github.io/</loc>
-    <lastmod>2024-01-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</loc>
-    <lastmod>2022-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://SimY4.github.io/categories/</loc>
-    <lastmod>2022-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://SimY4.github.io/categories/dev-blog/</loc>
-    <lastmod>2022-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://SimY4.github.io/tags/java/</loc>
-    <lastmod>2022-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://SimY4.github.io/posts/</loc>
-    <lastmod>2022-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://SimY4.github.io/tags/</loc>
     <lastmod>2022-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</loc>
