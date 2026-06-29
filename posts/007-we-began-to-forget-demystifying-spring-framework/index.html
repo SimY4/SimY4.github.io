@@ -30,25 +30,25 @@ principle.">
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="We Began to Forget: Demystifying Spring Framework">
-  <meta name="twitter:description" content="We began to forget how to pass parameters to functions.
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="We Began to Forget: Demystifying Spring Framework">
+	<meta name="twitter:description" content="We began to forget how to pass parameters to functions.
 Before @Bean, before @Configuration or @PropertySource and certainly way before WebSecurityConfigurerAdapter objects were responsible not only for their own behaviour, but also for creating everything they depended on.
 public class OrderService { private final PaymentProcessor processor; public OrderService() { this.processor = new StripePaymentProcessor(); } } This code works, but it also quietly locks many decisions inside the class, because OrderService now decides which payment processor is used, how it is created, and when its lifecycle starts, and once this happens, changing that decision means changing the code itself. Configuration and behaviour start to mix, breaking single responsibility principle.">
 
 <meta property="og:url" content="https://SimY4.github.io/posts/007-we-began-to-forget-demystifying-spring-framework/">
-  <meta property="og:site_name" content="My personal space">
-  <meta property="og:title" content="We Began to Forget: Demystifying Spring Framework">
-  <meta property="og:description" content="We began to forget how to pass parameters to functions.
+	<meta property="og:site_name" content="My personal space">
+	<meta property="og:title" content="We Began to Forget: Demystifying Spring Framework">
+	<meta property="og:description" content="We began to forget how to pass parameters to functions.
 Before @Bean, before @Configuration or @PropertySource and certainly way before WebSecurityConfigurerAdapter objects were responsible not only for their own behaviour, but also for creating everything they depended on.
 public class OrderService { private final PaymentProcessor processor; public OrderService() { this.processor = new StripePaymentProcessor(); } } This code works, but it also quietly locks many decisions inside the class, because OrderService now decides which payment processor is used, how it is created, and when its lifecycle starts, and once this happens, changing that decision means changing the code itself. Configuration and behaviour start to mix, breaking single responsibility principle.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-01-15T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-01-15T00:00:00+00:00">
-    <meta property="article:tag" content="Java">
-    <meta property="article:tag" content="We-Began-to-Forget">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-01-15T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-01-15T00:00:00+00:00">
+		<meta property="article:tag" content="Java">
+		<meta property="article:tag" content="We-Began-to-Forget">
 
 
 
@@ -63,7 +63,7 @@ public class OrderService { private final PaymentProcessor processor; public Ord
 
   
   
-  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -73,7 +73,7 @@ public class OrderService { private final PaymentProcessor processor; public Ord
   
     
     
-    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -92,6 +92,7 @@ public class OrderService { private final PaymentProcessor processor; public Ord
 
 <link rel="manifest" href="https://SimY4.github.io/site.webmanifest">
 <link rel="mask-icon" href="https://SimY4.github.io/images/safari-pinned-tab.svg" color="#5bbad5">
+
 
 
 
@@ -196,12 +197,15 @@ public class OrderService { private final PaymentProcessor processor; public Ord
         </div>
       </header>
 
+      
+
+
       <div class="post-content">
         
         <p>We began to forget how to pass parameters to functions.</p>
 <p>Before <code>@Bean</code>, before <code>@Configuration</code> or <code>@PropertySource</code> and certainly way before <code>WebSecurityConfigurerAdapter</code>
 objects were responsible not only for their own behaviour, but also for creating everything they depended on.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">OrderService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">OrderService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">private</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span>PaymentProcessor<span style="color:#bbb"> </span>processor;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#06287e">OrderService</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#007020;font-weight:bold">this</span>.<span style="color:#4070a0">processor</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>StripePaymentProcessor();<span style="color:#bbb">
@@ -221,14 +225,14 @@ principle.</p>
 </h2>
 <p>Inversion of control is simply the idea that a class should not decide how its dependencies are created, and instead
 it should only describe what it needs in order to work.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">OrderService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">OrderService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">private</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span>PaymentProcessor<span style="color:#bbb"> </span>processor;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#06287e">OrderService</span>(PaymentProcessor<span style="color:#bbb"> </span>processor)<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#007020;font-weight:bold">this</span>.<span style="color:#4070a0">processor</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>processor;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
 </span></span></span></code></pre></div><p>The simplest Spring context you can build today looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">var</span><span style="color:#bbb"> </span>context<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>GenericApplicationContext();<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">var</span><span style="color:#bbb"> </span>context<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>GenericApplicationContext();<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>context.<span style="color:#4070a0">registerBean</span>(PaymentProcessor.<span style="color:#4070a0">class</span>,<span style="color:#bbb"> </span>StripePaymentProcessor::<span style="color:#007020;font-weight:bold">new</span>);<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>context.<span style="color:#4070a0">registerBean</span>(OrderService.<span style="color:#4070a0">class</span>,<span style="color:#bbb"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>()<span style="color:#bbb"> </span><span style="color:#666">-&gt;</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>OrderService(context.<span style="color:#4070a0">getBean</span>(PaymentProcessor.<span style="color:#4070a0">class</span>)));<span style="color:#bbb">
@@ -238,7 +242,7 @@ it should only describe what it needs in order to work.</p>
 </span></span></span></code></pre></div><p>This is the moment where a container enters the picture, and dependency injection becomes the practical way to apply
 inversion of control.</p>
 <figure><img src="https://SimY4.github.io/images/posts/its-time-for-some-awesome-stories.png"
-    alt="Rule of Cool" width="400">
+			alt="Rule of Cool" width="400">
 </figure>
 
 <h2 id="declarative-era-when-xml-took-the-stage">
@@ -253,7 +257,7 @@ inversion of control.</p>
   <p>Spring did not invent the idea of describing components in XML, because enterprise Java was already full of it.</p>
 <p>Before Spring, J2EE and EJB used XML heavily, but those XML files were not only describing wiring, they were enforcing
 a very strict container model.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#062873;font-weight:bold">&lt;ejb-jar&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#062873;font-weight:bold">&lt;ejb-jar&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#062873;font-weight:bold">&lt;enterprise-beans&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#062873;font-weight:bold">&lt;session&gt;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#062873;font-weight:bold">&lt;ejb-name&gt;</span>OrderService<span style="color:#062873;font-weight:bold">&lt;/ejb-name&gt;</span>
@@ -277,7 +281,7 @@ fresh air, just plain objects wired by a container you controlled.</p>
 <p>Spring is a boundary between <em>what your code does</em> and <em>how your code is assembled</em>. And yes, it feels verbose.
 Verbosity invited abstraction and abstraction invited XML. Spring’s story began when object graphs were declared,
 not coded:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#062873;font-weight:bold">&lt;beans&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#062873;font-weight:bold">&lt;beans&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#062873;font-weight:bold">&lt;bean</span> <span style="color:#4070a0">id=</span><span style="color:#4070a0">&#34;paymentProcessor&#34;</span> <span style="color:#4070a0">class=</span><span style="color:#4070a0">&#34;com.example.StripePaymentProcessor&#34;</span><span style="color:#062873;font-weight:bold">/&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#062873;font-weight:bold">&lt;bean</span> <span style="color:#4070a0">id=</span><span style="color:#4070a0">&#34;orderService&#34;</span> <span style="color:#4070a0">class=</span><span style="color:#4070a0">&#34;com.example.OrderService&#34;</span><span style="color:#062873;font-weight:bold">&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#062873;font-weight:bold">&lt;constructor-arg</span> <span style="color:#4070a0">ref=</span><span style="color:#4070a0">&#34;paymentProcessor&#34;</span><span style="color:#062873;font-weight:bold">/&gt;</span>
@@ -291,7 +295,7 @@ fragile. But it worked and it was extremely popular.</p>
 <details>
   <summary>XML was not the only option available</summary>
   <p>There were other attempts at declarative DSLs. Still supported but rarely mentioned: Groovy based bean definitions</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>beans <span style="color:#666">{</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>beans <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>    paymentProcessor<span style="color:#666">(</span>StripePaymentProcessor<span style="color:#666">)</span>
 </span></span><span style="display:flex;"><span>    orderService<span style="color:#666">(</span>OrderService<span style="color:#666">,</span> paymentProcessor<span style="color:#666">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
@@ -309,7 +313,7 @@ fragile. But it worked and it was extremely popular.</p>
 </h2>
 <p>Not only beans form a graph, but contexts themselves can also form a graph. A Spring <code>ApplicationContext</code> is not always
 alone, because it can have a parent, and together they form a hierarchy where visibility flows in one direction.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">var</span><span style="color:#bbb"> </span>parent<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>ClassPathXmlApplicationContext(<span style="color:#4070a0">&#34;parent-context.xml&#34;</span>);<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">var</span><span style="color:#bbb"> </span>parent<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>ClassPathXmlApplicationContext(<span style="color:#4070a0">&#34;parent-context.xml&#34;</span>);<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">var</span><span style="color:#bbb"> </span>child<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>ClassPathXmlApplicationContext(<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>String<span style="color:#666">[]</span>{<span style="color:#4070a0">&#34;child-context.xml&#34;</span>},<span style="color:#bbb"> </span>parent);<span style="color:#bbb">
@@ -333,7 +337,7 @@ layered contexts are rarely present.</p>
 </h2>
 <p>Over time, XML started to feel heavy, and Spring slowly moved configuration back into Java code, using <code>@Configuration</code>
 and <code>@Bean</code> methods.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@Configuration</span><span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@Configuration</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">AppConfig</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#555;font-weight:bold">@Bean</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span>PaymentProcessor<span style="color:#bbb"> </span><span style="color:#06287e">paymentProcessor</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
@@ -350,7 +354,7 @@ and <code>@Bean</code> methods.</p>
 also changed something important under the surface. With XML, Spring could see the entire dependency graph before
 creating any objects, because everything was described as data. With Java methods, the graph became executable, and
 Spring could no longer fully know what a bean was without touching the code.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@Bean</span><span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@Bean</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span>PaymentProcessor<span style="color:#bbb"> </span><span style="color:#06287e">paymentProcessor</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">return</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>StripePaymentProcessor();<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
@@ -386,7 +390,7 @@ see. Understanding what your application context actually contains can now requi
 and mentally simulating condition evaluation.</p>
 <p>The level of reflection involved skyrocketed to extremes never seen before. My favourite example of this level of
 insanity in Spring is the <code>@ConditionalOnClass</code> annotation.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@ConditionalOnClass</span>(DataSource.<span style="color:#4070a0">class</span>)<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@ConditionalOnClass</span>(DataSource.<span style="color:#4070a0">class</span>)<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">DataSourceAutoConfiguration</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>...<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
@@ -486,6 +490,7 @@ helps to remember that Spring is still doing the same old thing. It is still bui
 
   
 
+  
 
   
 
@@ -521,4 +526,5 @@ helps to remember that Spring is still doing the same old thing. It is still bui
 
   
 </body>
+
 </html>

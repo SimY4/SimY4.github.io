@@ -18,21 +18,21 @@
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Cross-Compiling Scala in Gradle project">
-  <meta name="twitter:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Cross-Compiling Scala in Gradle project">
+	<meta name="twitter:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
 
 <meta property="og:url" content="https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/">
-  <meta property="og:site_name" content="My personal space">
-  <meta property="og:title" content="Cross-Compiling Scala in Gradle project">
-  <meta property="og:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2019-05-20T00:00:00+00:00">
-    <meta property="article:modified_time" content="2019-05-20T00:00:00+00:00">
-    <meta property="article:tag" content="Gradle">
-    <meta property="article:tag" content="Scala">
+	<meta property="og:site_name" content="My personal space">
+	<meta property="og:title" content="Cross-Compiling Scala in Gradle project">
+	<meta property="og:description" content="It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using SBT where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2019-05-20T00:00:00+00:00">
+		<meta property="article:modified_time" content="2019-05-20T00:00:00+00:00">
+		<meta property="article:tag" content="Gradle">
+		<meta property="article:tag" content="Scala">
 
 
 
@@ -47,7 +47,7 @@
 
   
   
-  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -57,7 +57,7 @@
   
     
     
-    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -76,6 +76,7 @@
 
 <link rel="manifest" href="https://SimY4.github.io/site.webmanifest">
 <link rel="mask-icon" href="https://SimY4.github.io/images/safari-pinned-tab.svg" color="#5bbad5">
+
 
 
 
@@ -180,6 +181,9 @@
         </div>
       </header>
 
+      
+
+
       <div class="post-content">
         
         <p>It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using <a href="https://www.scala-sbt.org/"  class="external-link" target="_blank" rel="noopener">SBT</a> where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?</p>
@@ -193,7 +197,7 @@
 </h2>
 <p>What I want is the same set of sources to be compiled for multiple versions of the Scala compiler: 2.11, 2.12 and 2.13. And since Scala 2.13 has a bunch of backward-incompatible changes to built-in collections, I would like to be able to add additional version-specific source sets for compiler-specific code. Again, it&rsquo;s a trivial task in SBT, let&rsquo;s see what we can do in Gradle:</p>
 <figure><img src="https://SimY4.github.io/images/posts/cross-compiling-scala-in-gradle-1.png"
-    alt="Initial Project Structure" width="600">
+			alt="Initial Project Structure" width="600">
 </figure>
 
 <p>The first difficulty to face is that the compiler version is calculated from the declared scala-library dependency version. In addition to that, all dependencies that are prefixed with the Scala compiler version in their GAV coordinates also need to be changed. And then, the set of compiler flags also differs from one compiler version to another: some flags have been renamed, while others have simply been deprecated or even removed entirely. I decided that trying to capture all the nuances of different compilers in one build file seems like a painfully difficult task and even more difficult to maintain it. Therefore, I decided to explore possible other ways to solve this problem. What if we create multiple configuration builds for the same project directory structure?</p>
@@ -207,7 +211,7 @@
 <p>In the declaration of submodules in the Gradle project, you can specify the directory where the root of the submodule and the name of the file responsible for its configuration will be located. Let&rsquo;s specify the same directory for multiple imports and create multiple copies of the build script for each compiler version:</p>
 <details>
   <summary>settings.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>rootProject<span style="color:#666">.</span><span style="color:#4070a0">name</span> <span style="color:#666">=</span> <span style="color:#4070a0">&#39;test&#39;</span>
+  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>rootProject<span style="color:#666">.</span><span style="color:#4070a0">name</span> <span style="color:#666">=</span> <span style="color:#4070a0">&#39;test&#39;</span>
 </span></span><span style="display:flex;"><span>include <span style="color:#4070a0">&#39;java-library&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>include <span style="color:#4070a0">&#39;scala-facade_2.11&#39;</span>
@@ -232,7 +236,7 @@
 <p>Not bad, but occasionally we can get strange compilation errors due to the fact that all three build scripts use the same build directory. We can fix this by setting them ourselves for each of the builds:</p>
 <details>
   <summary>build-2.12.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>plugins <span style="color:#666">{</span>
+  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>plugins <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>  id <span style="color:#4070a0">&#39;scala&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span>
@@ -249,7 +253,7 @@
 <p>What about additional source sets? Again, with separate files, this turned out to be quite simple, create a new directory and configure it as a source set:</p>
 <details>
   <summary>build-2.12.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
+  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>  compat <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>    scala <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>      srcDir <span style="color:#4070a0">&#39;src/main/scala-2.12-&#39;</span>
@@ -271,7 +275,7 @@
 </details>
 <details>
   <summary>build-2.13.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
+  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>  compat <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>    scala <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>      srcDir <span style="color:#4070a0">&#39;src/main/scala-2.13+&#39;</span>
@@ -293,7 +297,7 @@
 </details>
 <p>The final structure looks like this:</p>
 <figure><img src="https://SimY4.github.io/images/posts/cross-compiling-scala-in-gradle-2.png"
-    alt="Final Project Structure" width="600">
+			alt="Final Project Structure" width="600">
 </figure>
 
 <p>Here you can also extract individual common configuration pieces in external configuration files and import them into the build in order to reduce the number of repetitions. But for me it turned out well anyway, declarative, isolated and compatible with all possible Gradle plugins.</p>
@@ -380,6 +384,7 @@
 
   
 
+  
 
   
 
@@ -415,4 +420,5 @@
 
   
 </body>
+
 </html>

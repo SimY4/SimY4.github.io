@@ -25,21 +25,21 @@ A consistency token represents the state of a resource or entity at a given poin
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Consistency: There and Back Again">
-  <meta name="twitter:description" content="What is Consistency token? Link to heading A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the ETag header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom Event-Stream-State request header(s) with the following format (as per standard RFC definition):">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Consistency: There and Back Again">
+	<meta name="twitter:description" content="What is Consistency token? Link to heading A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the ETag header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom Event-Stream-State request header(s) with the following format (as per standard RFC definition):">
 
 <meta property="og:url" content="https://SimY4.github.io/posts/004-consistency-there-and-back-again/">
-  <meta property="og:site_name" content="My personal space">
-  <meta property="og:title" content="Consistency: There and Back Again">
-  <meta property="og:description" content="What is Consistency token? Link to heading A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the ETag header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom Event-Stream-State request header(s) with the following format (as per standard RFC definition):">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2021-07-18T00:00:00+00:00">
-    <meta property="article:modified_time" content="2021-07-18T00:00:00+00:00">
-    <meta property="article:tag" content="Fp">
-    <meta property="article:tag" content="Java">
+	<meta property="og:site_name" content="My personal space">
+	<meta property="og:title" content="Consistency: There and Back Again">
+	<meta property="og:description" content="What is Consistency token? Link to heading A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the ETag header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom Event-Stream-State request header(s) with the following format (as per standard RFC definition):">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2021-07-18T00:00:00+00:00">
+		<meta property="article:modified_time" content="2021-07-18T00:00:00+00:00">
+		<meta property="article:tag" content="Fp">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -54,7 +54,7 @@ A consistency token represents the state of a resource or entity at a given poin
 
   
   
-  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -64,7 +64,7 @@ A consistency token represents the state of a resource or entity at a given poin
   
     
     
-    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="https://SimY4.github.io/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -83,6 +83,7 @@ A consistency token represents the state of a resource or entity at a given poin
 
 <link rel="manifest" href="https://SimY4.github.io/site.webmanifest">
 <link rel="mask-icon" href="https://SimY4.github.io/images/safari-pinned-tab.svg" color="#5bbad5">
+
 
 
 
@@ -187,6 +188,9 @@ A consistency token represents the state of a resource or entity at a given poin
         </div>
       </header>
 
+      
+
+
       <div class="post-content">
         
         <h2 id="what-is-consistency-token">
@@ -197,7 +201,7 @@ A consistency token represents the state of a resource or entity at a given poin
   </a>
 </h2>
 <p>A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the <code>ETag</code> header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom <code>Event-Stream-State</code> request header(s) with the following format (as per standard RFC definition):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Event-Stream-State = ( &#34;At-Least&#34; (token)
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Event-Stream-State = ( &#34;At-Least&#34; (token)
 </span></span><span style="display:flex;"><span>                     | &#34;Check-At-Least&#34; (token)
 </span></span><span style="display:flex;"><span>                     )
 </span></span></code></pre></div><p><code>At-Least</code> means the underlying data used for the request will be brought up to at least the state denoted by the token. This may incur a delay.</p>
@@ -212,7 +216,7 @@ A consistency token represents the state of a resource or entity at a given poin
   </a>
 </h2>
 <p>Since consistency state was passed around in request headers, we’ve parsed and kept consistency tokens in an implicit threadlocal request context. And because of implicit nature of request context, consistency can be summoned at any point in time into an explicit scope via framework’s utilities. That clears code a lot in places where you don’t care about consistency and allows you to easily access it if you’re calling it from a request scoped thread.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">InitialConsistencyService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">InitialConsistencyService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>Stuff<span style="color:#666">&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">updateStuff</span>(Stuff<span style="color:#bbb"> </span>stuff);<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>Optional<span style="color:#666">&lt;</span>Stuff<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">fetchStuff</span>(...);<span style="color:#bbb">
@@ -229,7 +233,7 @@ A consistency token represents the state of a resource or entity at a given poin
   </a>
 </h2>
 <p>By making consistency explicit, we meant to start passing it all the way from a request parsing step to a response generation step. Which means that all of our services now need to become aware of it.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">ConsistencyAwareService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">ConsistencyAwareService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>Stuff<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">updateStuff</span>(Stuff<span style="color:#bbb"> </span>stuff);<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>Optional<span style="color:#666">&lt;</span>Stuff<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">fetchStuff</span>(...,<span style="color:#bbb"> </span>Consistency<span style="color:#bbb"> </span>consistency);<span style="color:#bbb">
@@ -244,7 +248,7 @@ A consistency token represents the state of a resource or entity at a given poin
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>...<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
 </span></span></span></code></pre></div><p>That solves the problem of consistency being implicit. But suddenly it makes consistency instances passed all over the place! Suddenly the code that was mostly focused on expressing the business relevant logic was bloated with passing, converting and aggregating consistency. It looked like it’s the only thing that code does. Which is not relevant since it’s a technical detail. Here’s the real-life example on how we aggregate consistencies when we process a list of consistency aware operations:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consistency<span style="color:#bbb"> </span>initial<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>...;<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consistency<span style="color:#bbb"> </span>initial<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>...;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>listOfStuff.<span style="color:#4070a0">stream</span>()<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>.<span style="color:#4070a0">map</span>(stuff<span style="color:#bbb"> </span><span style="color:#666">-&gt;</span><span style="color:#bbb"> </span>consistencyAwareService.<span style="color:#4070a0">doReadAndWriteWith</span>(stuff,<span style="color:#bbb"> </span>initial))<span style="color:#bbb"> </span><span style="color:#60a0b0;font-style:italic">// &lt;- this is the only bit here that actually does something other than managing consistency</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>.<span style="color:#4070a0">reduce</span>(Either.<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>List<span style="color:#666">&lt;</span>Stuff<span style="color:#666">&gt;&gt;&gt;</span>right(WithConsistency.<span style="color:#4070a0">of</span>(<span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>ArrayList<span style="color:#666">&lt;&gt;</span>(),<span style="color:#bbb"> </span>initial)),<span style="color:#bbb">
@@ -268,15 +272,15 @@ A consistency token represents the state of a resource or entity at a given poin
 </h2>
 <p>One thing I decided to do here was since we’re trying to practice an FP (at least to some extent) let&rsquo;s try to find the answers in FP patterns.</p>
 <p>First of all, by looking at the last fully encoded type that I came up with we can clearly see that we can change the order or our type arguments to make it simpler:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Either<span style="color:#666">&lt;</span>WithConsistency<span style="color:#666">&lt;</span>Error<span style="color:#666">&gt;</span>,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>T<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...,<span style="color:#bbb"> </span>Consistency<span style="color:#bbb"> </span>constency)<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Either<span style="color:#666">&lt;</span>WithConsistency<span style="color:#666">&lt;</span>Error<span style="color:#666">&gt;</span>,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>T<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...,<span style="color:#bbb"> </span>Consistency<span style="color:#bbb"> </span>constency)<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// equivalent to</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>WithConsistency<span style="color:#666">&lt;</span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...,<span style="color:#bbb"> </span>Consistency<span style="color:#bbb"> </span>constency)<span style="color:#bbb">
 </span></span></span></code></pre></div><p>That simplifies things a little but still, we will face the same problem as before: encoding all of the type transformations. Let’s improve that code further. We can move the <code>Consistency</code> argument from the right-hand side to the left and see what that can give us.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>WithConsistency<span style="color:#666">&lt;</span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...,<span style="color:#bbb"> </span>Consistency<span style="color:#bbb"> </span>constency)<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>WithConsistency<span style="color:#666">&lt;</span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...,<span style="color:#bbb"> </span>Consistency<span style="color:#bbb"> </span>constency)<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// equivalent to</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>Function<span style="color:#666">&lt;</span>Consistency,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...)<span style="color:#bbb">
 </span></span></span></code></pre></div><p>From the looks of that signature, we can notice that this method becomes lazy. Before that, we return an actual value and now we return a function, calling which with initial consistency state you can get a pair latest evaluated consistency as well as calculated value. We can also notice something similar in the shape of that signature… We take consistency and return consistency back associated with some value. That can be encoded as a State monad.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#666">&lt;</span>Consistency,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...)<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#666">&lt;</span>Consistency,<span style="color:#bbb"> </span>WithConsistency<span style="color:#666">&lt;</span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...)<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// equivalent to</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>State<span style="color:#666">&lt;</span>Consistency,<span style="color:#bbb"> </span>Either<span style="color:#666">&lt;</span>Error,<span style="color:#bbb"> </span>T<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">readAndWriteStuff</span>(...);<span style="color:#bbb">
 </span></span></span></code></pre></div><p>And because the state is a monad we can compose lazily evaluated states to create a bigger state transition. That, in the end, is not attached to any thread - you can run that state transition wherever you feel like it. You can pass state evaluator as a value to a different thread as well as initial consistency value.</p>
@@ -289,9 +293,9 @@ A consistency token represents the state of a resource or entity at a given poin
   </a>
 </h2>
 <p>There’s a <a href="https://medium.com/@johnmcclean/simulating-higher-kinded-types-in-java-b52a18b72c74"  class="external-link" target="_blank" rel="noopener">good article about how we can encode higher-kinded types in Java</a>. Basically we I&rsquo;m going to follow that article in order to encode the state monad and either transformer. I&rsquo;ll assume that we have State already implemented because it&rsquo;s not that interesting. State is a type that wraps an arrow <code>(S) -&gt; (S, A)</code> with flatMap and pure methods that allow you to compose one state with another. To encode the higher kinds in Java, we&rsquo;ll create an interface with two type parameters:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">Kind1</span><span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{}<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">Kind1</span><span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{}<span style="color:#bbb">
 </span></span></span></code></pre></div><p>The first argument will encode the witness of our current data type and the other will be the argument of that type. Then for our state monad we’ll add a <code>StateKind</code> extending this interface:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">StateKind</span><span style="color:#666">&lt;</span>W<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">extends</span><span style="color:#bbb"> </span>Witness<span style="color:#666">&lt;</span>S<span style="color:#666">&gt;</span>,<span style="color:#bbb"> </span>S,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">extends</span><span style="color:#bbb"> </span>Kind1<span style="color:#666">&lt;</span>W,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">StateKind</span><span style="color:#666">&lt;</span>W<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">extends</span><span style="color:#bbb"> </span>Witness<span style="color:#666">&lt;</span>S<span style="color:#666">&gt;</span>,<span style="color:#bbb"> </span>S,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">extends</span><span style="color:#bbb"> </span>Kind1<span style="color:#666">&lt;</span>W,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">Witness</span><span style="color:#666">&lt;</span>S<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#007020;font-weight:bold">protected</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span>State<span style="color:#666">&lt;</span>S,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>delegate;<span style="color:#bbb">
@@ -316,7 +320,7 @@ A consistency token represents the state of a resource or entity at a given poin
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
 </span></span></span></code></pre></div><p>Based on this we can define a state monad instance:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">Monad</span><span style="color:#666">&lt;</span>WITNESS<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">Monad</span><span style="color:#666">&lt;</span>WITNESS<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#666">&lt;</span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>Kind1<span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">pure</span>(A<span style="color:#bbb"> </span>a);<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#666">&lt;</span>A,<span style="color:#bbb"> </span>B<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>Kind1<span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>B<span style="color:#666">&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">flatMap</span>(Kind1<span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>A<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>kind,<span style="color:#bbb"> </span>Function<span style="color:#666">&lt;?</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">super</span><span style="color:#bbb"> </span>A,<span style="color:#bbb"> </span><span style="color:#666">?</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">extends</span><span style="color:#bbb"> </span>Kind1<span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>B<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span>fmap);<span style="color:#bbb">
@@ -340,7 +344,7 @@ A consistency token represents the state of a resource or entity at a given poin
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#007020;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">static</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span>Monad<span style="color:#666">&lt;</span>ConsistencyState<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>MONAD<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">new</span><span style="color:#bbb"> </span>StateMonad<span style="color:#666">&lt;</span>ConsistencyState,<span style="color:#bbb"> </span>Consistency<span style="color:#666">&gt;</span>();<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
 </span></span></span></code></pre></div><p>And having all that we can implement an <code>Either</code> transformer for any monad instance:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">EitherT</span><span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>L,<span style="color:#bbb"> </span>R<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">EitherT</span><span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>L,<span style="color:#bbb"> </span>R<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#007020;font-weight:bold">private</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span>Monad<span style="color:#666">&lt;</span>WITNESS<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>monad;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#007020;font-weight:bold">private</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">final</span><span style="color:#bbb"> </span>Kind1<span style="color:#666">&lt;</span>WITNESS,<span style="color:#bbb"> </span>Either<span style="color:#666">&lt;</span>L,<span style="color:#bbb"> </span>R<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span>kind;<span style="color:#bbb">
@@ -364,7 +368,7 @@ A consistency token represents the state of a resource or entity at a given poin
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>...<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span>}<span style="color:#bbb">
 </span></span></span></code></pre></div><p>Having this we can replace our types with <code>EitherT&lt;ConsistencyState, Error, T&gt;</code> and we can work with as if we would work with an <code>Either</code> type directly! But of course, it will do the same dual monad transformation under the curtains. But we don’t care since now it’s hidden from us. So the final Consistency API will look like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">FpThroughTheRoofService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">interface</span> <span style="color:#0e84b5;font-weight:bold">FpThroughTheRoofService</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>EitherT<span style="color:#666">&lt;</span>ConsistencyState,<span style="color:#bbb"> </span>Error,<span style="color:#bbb"> </span>Stuff<span style="color:#666">&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">updateStuff</span>(Stuff<span style="color:#bbb"> </span>stuff);<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>EitherT<span style="color:#666">&lt;</span>ConsistencyState,<span style="color:#bbb"> </span>Error,<span style="color:#bbb"> </span>Optional<span style="color:#666">&lt;</span>Stuff<span style="color:#666">&gt;&gt;</span><span style="color:#bbb"> </span><span style="color:#06287e">fetchStuff</span>(...);<span style="color:#bbb">
@@ -455,6 +459,7 @@ A consistency token represents the state of a resource or entity at a given poin
 
   
 
+  
 
   
 
@@ -490,4 +495,5 @@ A consistency token represents the state of a resource or entity at a given poin
 
   
 </body>
+
 </html>
