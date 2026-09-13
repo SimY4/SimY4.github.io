@@ -63,7 +63,7 @@ public class OrderService { private final PaymentProcessor processor; public Ord
 
   
   
-  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.5e94c1acf7aa2066035cf2764ae3e4fe39db101d68b870f919966100d51fb861.css" integrity="sha256-XpTBrPeqIGYDXPJ2SuPk/jnbEB1ouHD5GZZhANUfuGE=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -252,9 +252,10 @@ inversion of control.</p>
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
+
 <details>
-  <summary>Spring don&rsquo;t even&hellip;</summary>
-  <p>Spring did not invent the idea of describing components in XML, because enterprise Java was already full of it.</p>
+	<summary>Spring don&rsquo;t even&hellip;</summary>
+	<p>Spring did not invent the idea of describing components in XML, because enterprise Java was already full of it.</p>
 <p>Before Spring, J2EE and EJB used XML heavily, but those XML files were not only describing wiring, they were enforcing
 a very strict container model.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#062873;font-weight:bold">&lt;ejb-jar&gt;</span>
@@ -270,8 +271,8 @@ a very strict container model.</p>
 At that time there was a joke, which says that Java is a language that converts XML files into stack traces.</p>
 <p>Spring offered you a library. It was about decoupling enterprise concerns from enterprise infrastructure. A breath of
 fresh air, just plain objects wired by a container you controlled.</p>
-
 </details>
+
 <p>In the example above you explicitly declare:</p>
 <ul>
 <li>what beans exist</li>
@@ -292,9 +293,10 @@ not coded:</p>
 </span></span><span style="display:flex;"><span>var service = context.getBean(OrderService.class);
 </span></span></code></pre></div><p>Object wiring became declarative. But at the same time XML grew dense, IDE support lagged behind, refactoring was
 fragile. But it worked and it was extremely popular.</p>
+
 <details>
-  <summary>XML was not the only option available</summary>
-  <p>There were other attempts at declarative DSLs. Still supported but rarely mentioned: Groovy based bean definitions</p>
+	<summary>XML was not the only option available</summary>
+	<p>There were other attempts at declarative DSLs. Still supported but rarely mentioned: Groovy based bean definitions</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>beans <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>    paymentProcessor<span style="color:#666">(</span>StripePaymentProcessor<span style="color:#666">)</span>
 </span></span><span style="display:flex;"><span>    orderService<span style="color:#666">(</span>OrderService<span style="color:#666">,</span> paymentProcessor<span style="color:#666">)</span>
@@ -302,8 +304,8 @@ fragile. But it worked and it was extremely popular.</p>
 </span></span><span style="display:flex;"><span><span style="color:#666">...</span>
 </span></span><span style="display:flex;"><span><span style="color:#902000">var</span> context <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">new</span> GenericGroovyApplicationContext<span style="color:#666">(</span><span style="color:#4070a0">&#34;beans.groovy&#34;</span><span style="color:#666">);</span>
 </span></span></code></pre></div><p>works only if you have Groovy on your classpath. It never became mainstream.</p>
-
 </details>
+
 <h2 id="context-of-contexts">
   Context of Contexts
   <a class="heading-link" href="#context-of-contexts">

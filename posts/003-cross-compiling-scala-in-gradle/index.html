@@ -47,7 +47,7 @@
 
   
   
-  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="https://SimY4.github.io/css/coder.min.5e94c1acf7aa2066035cf2764ae3e4fe39db101d68b870f919966100d51fb861.css" integrity="sha256-XpTBrPeqIGYDXPJ2SuPk/jnbEB1ouHD5GZZhANUfuGE=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -209,9 +209,10 @@
   </a>
 </h2>
 <p>In the declaration of submodules in the Gradle project, you can specify the directory where the root of the submodule and the name of the file responsible for its configuration will be located. Let&rsquo;s specify the same directory for multiple imports and create multiple copies of the build script for each compiler version:</p>
+
 <details>
-  <summary>settings.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>rootProject<span style="color:#666">.</span><span style="color:#4070a0">name</span> <span style="color:#666">=</span> <span style="color:#4070a0">&#39;test&#39;</span>
+	<summary>settings.gradle</summary>
+	<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>rootProject<span style="color:#666">.</span><span style="color:#4070a0">name</span> <span style="color:#666">=</span> <span style="color:#4070a0">&#39;test&#39;</span>
 </span></span><span style="display:flex;"><span>include <span style="color:#4070a0">&#39;java-library&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>include <span style="color:#4070a0">&#39;scala-facade_2.11&#39;</span>
@@ -231,12 +232,13 @@
 </span></span><span style="display:flex;"><span>  projectDir <span style="color:#666">=</span> file<span style="color:#666">(</span><span style="color:#4070a0">&#39;scala-facade&#39;</span><span style="color:#666">)</span>
 </span></span><span style="display:flex;"><span>  buildFileName <span style="color:#666">=</span> <span style="color:#4070a0">&#39;build-2.13.gradle&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
-</span></span></code></pre></div>
-</details>
+</span></span></code></pre></div></details>
+
 <p>Not bad, but occasionally we can get strange compilation errors due to the fact that all three build scripts use the same build directory. We can fix this by setting them ourselves for each of the builds:</p>
+
 <details>
-  <summary>build-2.12.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>plugins <span style="color:#666">{</span>
+	<summary>build-2.12.gradle</summary>
+	<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>plugins <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>  id <span style="color:#4070a0">&#39;scala&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span>
@@ -247,13 +249,14 @@
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// ...
-</span></span></span></code></pre></div>
-</details>
+</span></span></span></code></pre></div></details>
+
 <p>Now, it&rsquo;s shaping up nicely. The only problem is that such a build will drive your favorite IDE crazy and most likely you will have to do further editing completely goalless. I thought that this is not a big problem, because. you can always comment out extra imports of submodules and turn your cross build into a regular build that your IDE most likely can work with.</p>
 <p>What about additional source sets? Again, with separate files, this turned out to be quite simple, create a new directory and configure it as a source set:</p>
+
 <details>
-  <summary>build-2.12.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
+	<summary>build-2.12.gradle</summary>
+	<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>  compat <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>    scala <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>      srcDir <span style="color:#4070a0">&#39;src/main/scala-2.12-&#39;</span>
@@ -271,11 +274,12 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
-</span></span></code></pre></div>
-</details>
+</span></span></code></pre></div></details>
+
+
 <details>
-  <summary>build-2.13.gradle</summary>
-  <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
+	<summary>build-2.13.gradle</summary>
+	<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>sourceSets <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>  compat <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>    scala <span style="color:#666">{</span>
 </span></span><span style="display:flex;"><span>      srcDir <span style="color:#4070a0">&#39;src/main/scala-2.13+&#39;</span>
@@ -293,8 +297,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#666">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#666">}</span>
-</span></span></code></pre></div>
-</details>
+</span></span></code></pre></div></details>
+
 <p>The final structure looks like this:</p>
 <figure><img src="https://SimY4.github.io/images/posts/cross-compiling-scala-in-gradle-2.png"
 			alt="Final Project Structure" width="600">
