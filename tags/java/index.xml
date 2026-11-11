@@ -14,6 +14,13 @@
 		
 			<atom:link href="https://SimY4.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
 			<item>
+				<title>We Began to Forget: Demystifying Gradle</title>
+				<link>https://SimY4.github.io/posts/008-we-began-to-forget-demystifying-gradle/</link>
+				<pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://SimY4.github.io/posts/008-we-began-to-forget-demystifying-gradle/</guid>
+				<description>&lt;p&gt;We began to forget that a build is just a function from files to files.&lt;/p&gt;&#xA;&lt;p&gt;Make, 1976: a target, its prerequisites, a recipe, and a timestamp comparison. That&amp;rsquo;s the whole idea.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app.jar: Main.class&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;jar cf app.jar Main.class&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Main.class: Main.java&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;javac Main.java&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Every JVM build tool since then is a remix of it: Ant, Maven, Gradle. Gradle is make with a few upgrades:&#xA;content hashes instead of timestamps and a typed lazy model instead of strings.&lt;/p&gt;</description>
+			</item>
+			<item>
 				<title>We Began to Forget: Demystifying Spring Framework</title>
 				<link>https://SimY4.github.io/posts/007-we-began-to-forget-demystifying-spring-framework/</link>
 				<pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
