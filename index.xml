@@ -1,80 +1,119 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>My personal space</title>
-		<link>https://SimY4.github.io/</link>
-		<description>Recent content on My personal space</description>
-		<generator>Hugo</generator>
-		<language>en</language>
-		
-		
-		
-		
-			<lastBuildDate>Sun, 11 Oct 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>We Began to Forget: Demystifying Gradle</title>
-				<link>https://SimY4.github.io/posts/008-we-began-to-forget-demystifying-gradle/</link>
-				<pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/008-we-began-to-forget-demystifying-gradle/</guid>
-				<description>&lt;p&gt;We began to forget that a build is just a function from files to files.&lt;/p&gt;&#xA;&lt;p&gt;Make, 1976: a target, its prerequisites, a recipe, and a timestamp comparison. That&amp;rsquo;s the whole idea.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app.jar: Main.class&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;jar cf app.jar Main.class&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Main.class: Main.java&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;javac Main.java&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Every JVM build tool since then is a remix of it: Ant, Maven, Gradle. Gradle is make with a few upgrades:&#xA;content hashes instead of timestamps and a typed lazy model instead of strings.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>ALEX SIMKIN</title>
-				<link>https://SimY4.github.io/about/</link>
-				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/about/</guid>
-				<description>&lt;p&gt;Strategic technical leader with 18+ years of experience building mission-critical cloud platforms and distributed systems. Deep JVM expertise, with a strong focus on architectural integrity and pragmatic engineering. Experienced leading complex initiatives from conception through delivery while remaining deeply hands-on and balancing technical excellence with business outcomes.&lt;/p&gt;&#xA;&lt;h2 id=&#34;target-roles&#34;&gt;&#xA;  Target roles&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#target-roles&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Principal Engineer · Tech Lead · Backend / Platform Engineering&lt;/p&gt;&#xA;&lt;div style=&#34;display: flex&#34;&gt;&#xA;  &lt;aside&gt;&#xA;    &lt;h5&gt;CONTACTS&lt;/h5&gt;&#xA;    &lt;ul style=&#34;list-style:none;padding-left:0&#34;&gt;&#xA;      &lt;li&gt;Sydney, Australia&lt;/li&gt;&#xA;      &lt;li&gt;&lt;a href=&#34;https://linkedin.com/in/simy4&#34;&gt;linkedin&lt;/a&gt;&lt;/li&gt;&#xA;      &lt;li&gt;&lt;a href=&#34;https://github.com/simy4&#34;&gt;github&lt;/a&gt;&lt;/li&gt;&#xA;      &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/users/1439771/simy4&#34;&gt;stackoverflow&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;    &lt;h5&gt;SKILLS&lt;/h5&gt;&#xA;    &lt;ul style=&#34;list-style:none;padding-left:0&#34;&gt;&#xA;      &lt;li&gt;Java: &lt;strong&gt;18 years&lt;/strong&gt;&lt;/li&gt;&#xA;      &lt;li&gt;Spring Framework: &lt;strong&gt;18 years&lt;/strong&gt;&lt;/li&gt;&#xA;      &lt;li&gt;AngularJS / React: &lt;strong&gt;10 years&lt;/strong&gt;&lt;/li&gt;&#xA;      &lt;li&gt;Scala / Kotlin: &lt;strong&gt;13 years&lt;/strong&gt;&lt;/li&gt;&#xA;      &lt;li&gt;AWS: &lt;strong&gt;10 years&lt;/strong&gt;&lt;/li&gt;&#xA;      &lt;li&gt;Clojure: 4 year&lt;/li&gt;&#xA;      &lt;li&gt;Go: 4 year&lt;/li&gt;&#xA;      &lt;li&gt;Rust: 4 year&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;    &lt;h5&gt;EDUCATION&lt;/h5&gt;&#xA;    &lt;ul style=&#34;list-style:none;padding-left:0&#34;&gt;&#xA;      &lt;li&gt;&lt;strong&gt;2003-2009&lt;/strong&gt;&lt;br/&gt;Moscow Aviation Institute — Engineer&#39;s Degree in Mathematics and Computer Science&lt;/li&gt;&#xA;      &lt;li&gt;&lt;strong&gt;2019&lt;/strong&gt;&lt;br/&gt;Course Certificate — Functional Programming Principles in Scala&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;    &lt;h5&gt;LANGUAGES&lt;/h5&gt;&#xA;    &lt;ul style=&#34;list-style:none;padding-left:0&#34;&gt;&#xA;      &lt;li&gt;English (fluent)&lt;/li&gt;&#xA;      &lt;li&gt;Russian (native)&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;  &lt;/aside&gt;&#xA;  &lt;main&gt;&#xA;    &lt;div style=&#34;border-left: 3px solid;padding-left:10px;margin-left:5px&#34;&gt;&#xA;      &lt;h2 id=&#34;professional-experience&#34;&gt;&#xA;  Professional experience&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#professional-experience&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Atlassian —  Aug 2016 - Present&lt;/strong&gt;&lt;br&gt;&#xA;Software engineer and technical leader working across Identity, Commerce, tenant provisioning and cloud cost efficiency initiatives.&lt;br&gt;&#xA;&lt;strong&gt;Identity&lt;/strong&gt;&lt;br&gt;&#xA;‣ Delivered a new User Management Platform and Access Product.&lt;br&gt;&#xA;‣ Modernized the tech stack, proactively preventing tech debt creep.&lt;br&gt;&#xA;‣ Implemented technical changes required to support GDPR compliance.&lt;br&gt;&#xA;&lt;strong&gt;Commerce&lt;/strong&gt;&lt;br&gt;&#xA;‣ Led the technical delivery of an Accounts Receivable platform integrating Stripe as payment gateway, owning key technical decisions across the payment processing lifecycle.&lt;br&gt;&#xA;‣ Championed a platform-oriented approach across teams, improving architectural consistency and reducing tech debt.&lt;br&gt;&#xA;‣ Mentored engineers in their technical and career development.&lt;br&gt;&#xA;&lt;strong&gt;Provisioning &amp;amp; FinOps&lt;/strong&gt;&lt;br&gt;&#xA;‣ Designed and implemented components of a new self-serve product provisioning orchestration framework plus test harness.&lt;br&gt;&#xA;‣ Led cloud cost efficiency initiative, identifying and addressing resource optimisations that delivered more than $1.6M in savings.&lt;br&gt;&#xA;&lt;strong&gt;Stack:&lt;/strong&gt; AWS, Java, Kotlin, Scala, Go, PostgreSQL, React, TypeScript&lt;br&gt;&#xA;&lt;br&gt;&#xA;&lt;strong&gt;Luxoft —  Sep 2014 - Aug 2016&lt;/strong&gt;&lt;br&gt;&#xA;Software engineer for Deutsche Bank trade processing project&lt;br&gt;&#xA;‣ Developed a high-load trade processing service supporting mission-critical financial workflows.&lt;br&gt;&#xA;&lt;strong&gt;Stack:&lt;/strong&gt; Java, Spring Framework, Oracle DB&lt;br&gt;&#xA;&lt;br&gt;&#xA;&lt;strong&gt;Others&lt;/strong&gt;&lt;br&gt;&#xA;&lt;strong&gt;T-Systems CIS —  Dec 2012 - Sep 2014&lt;/strong&gt;&lt;br&gt;&#xA;&lt;strong&gt;Technology Systems —  Jan 2012 - Dec 2012&lt;/strong&gt;&lt;br&gt;&#xA;&lt;strong&gt;Core Partners —  Jul 2009 - Jan 2012&lt;/strong&gt;&lt;/p&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/main&gt;&#xA;&lt;/div&gt;</description>
-			</item>
-			<item>
-				<title>We Began to Forget: Demystifying Spring Framework</title>
-				<link>https://SimY4.github.io/posts/007-we-began-to-forget-demystifying-spring-framework/</link>
-				<pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/007-we-began-to-forget-demystifying-spring-framework/</guid>
-				<description>&lt;p&gt;We began to forget how to pass parameters to functions.&lt;/p&gt;&#xA;&lt;p&gt;Before &lt;code&gt;@Bean&lt;/code&gt;, before &lt;code&gt;@Configuration&lt;/code&gt; or &lt;code&gt;@PropertySource&lt;/code&gt; and certainly way before &lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt;&#xA;objects were responsible not only for their own behaviour, but also for creating everything they depended on.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;OrderService&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;{&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;private&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;final&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;PaymentProcessor&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;processor;&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#06287e&#34;&gt;OrderService&lt;/span&gt;()&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;{&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#4070a0&#34;&gt;processor&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;StripePaymentProcessor();&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This code works, but it also quietly locks many decisions inside the class, because &lt;code&gt;OrderService&lt;/code&gt; now decides which&#xA;payment processor is used, how it is created, and when its lifecycle starts, and once this happens, changing that&#xA;decision means changing the code itself. Configuration and behaviour start to mix, breaking single responsibility&#xA;principle.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>We Began to Forget: Public Morozov Anti-Pattern</title>
-				<link>https://SimY4.github.io/posts/006-we-began-to-forget-public-morozov-anti-pattern/</link>
-				<pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/006-we-began-to-forget-public-morozov-anti-pattern/</guid>
-				<description>&lt;p&gt;I decided to start new series of blogs called “We Began to Forget”. The idea is simple and a little melancholic.&#xA;Software engineering has a short memory, patterns get discovered and then forgotten, lessons get relearned.&#xA;These posts are small memory refreshers about important aspects of our craft with a strong focus on clever hacks&#xA;rather than things you can read in clever books. Books will make sure the good patterns will live on,&#xA;but tribal knowledge has to be passed by word of mouth.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Avoiding Stringly Typed</title>
-				<link>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</link>
-				<pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</guid>
-				<description>&lt;p&gt;There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input.&#xA;So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#0e84b5;font-weight:bold&#34;&gt;EmailSender&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;{&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#902000&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#06287e&#34;&gt;sendEmail&lt;/span&gt;(String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;from,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#007020;font-weight:bold&#34;&gt;to&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;subject,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;String&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;body);&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;span style=&#34;color:#bbb&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;there’s an obvious ambiguity in the type signature here. All of the arguments are of the same type and can be easily misplaced.&#xA;Not to mention that any string is accepted as a valid input that, as it seems, suppose to only be a valid email.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Consistency: There and Back Again</title>
-				<link>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</link>
-				<pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</guid>
-				<description>&lt;h2 id=&#34;what-is-consistency-token&#34;&gt;&#xA;  What is Consistency token?&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#what-is-consistency-token&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the &lt;code&gt;ETag&lt;/code&gt; header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom &lt;code&gt;Event-Stream-State&lt;/code&gt; request header(s) with the following format (as per standard RFC definition):&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Cross-Compiling Scala in Gradle project</title>
-				<link>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</link>
-				<pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</guid>
-				<description>&lt;p&gt;It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using &lt;a href=&#34;https://www.scala-sbt.org/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SBT&lt;/a&gt; where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Monads Explained</title>
-				<link>https://SimY4.github.io/posts/002-monads-explained/</link>
-				<pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/002-monads-explained/</guid>
-				<description>&lt;h2 id=&#34;referential-transparency&#34;&gt;&#xA;  Referential transparency&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#referential-transparency&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs.&#xA;It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Here you are!</title>
-				<link>https://SimY4.github.io/posts/001-here-you-are/</link>
-				<pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/001-here-you-are/</guid>
-				<description>&lt;p&gt;Hi, there.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re reading this that means that you&amp;rsquo;ve ended up in my personal blog. Welcome! I&amp;rsquo;ll try to keep it short and interesting for both of us.&lt;/p&gt;&#xA;&lt;p&gt;In the past few years, I&amp;rsquo;ve got fascinated by the topic of pure functional programming. I was lucky enough to see it being applied in real-world projects, I learned a lot from people practising it at their everyday work. And today, I believe I grasped enough knowledge on this topic for me to share it with you as a series of educative blog posts.&lt;/p&gt;</description>
-			</item>
-	</channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My personal space</title><link>https://SimY4.github.io/</link><description>Recent content on My personal space</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 11 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>We Began to Forget: Demystifying Gradle</title><link>https://SimY4.github.io/posts/008-we-began-to-forget-demystifying-gradle/</link><pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/008-we-began-to-forget-demystifying-gradle/</guid><description>&lt;p&gt;We began to forget that a build is just a function from files to files.&lt;/p&gt;
+&lt;p&gt;Make, 1976: a target, its prerequisites, a recipe, and a timestamp comparison. That&amp;rsquo;s the whole idea.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;app.jar: Main.class
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	jar cf app.jar Main.class
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Main.class: Main.java
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	javac Main.java
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Every JVM build tool since then is a remix of it: Ant, Maven, Gradle. Gradle is make with a few upgrades:
+content hashes instead of timestamps and a typed lazy model instead of strings.&lt;/p&gt;</description></item><item><title>ALEX SIMKIN</title><link>https://SimY4.github.io/about/</link><pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/about/</guid><description>&lt;p&gt;Strategic technical leader with 18+ years of experience building mission-critical cloud platforms and distributed systems. Deep JVM expertise, with a strong focus on architectural integrity and pragmatic engineering. Experienced leading complex initiatives from conception through delivery while remaining deeply hands-on and balancing technical excellence with business outcomes.&lt;/p&gt;
+&lt;h2 id="target-roles"&gt;
+ Target roles
+ &lt;a class="heading-link" href="#target-roles"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Principal Engineer · Tech Lead · Backend / Platform Engineering&lt;/p&gt;
+&lt;div style="display: flex"&gt;
+ &lt;aside&gt;
+ &lt;h5&gt;CONTACTS&lt;/h5&gt;
+ &lt;ul style="list-style:none;padding-left:0"&gt;
+ &lt;li&gt;Sydney, Australia&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://linkedin.com/in/simy4"&gt;linkedin&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://github.com/simy4"&gt;github&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://stackoverflow.com/users/1439771/simy4"&gt;stackoverflow&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;h5&gt;SKILLS&lt;/h5&gt;
+ &lt;ul style="list-style:none;padding-left:0"&gt;
+ &lt;li&gt;Java: &lt;strong&gt;18 years&lt;/strong&gt;&lt;/li&gt;
+ &lt;li&gt;Spring Framework: &lt;strong&gt;18 years&lt;/strong&gt;&lt;/li&gt;
+ &lt;li&gt;AngularJS / React: &lt;strong&gt;10 years&lt;/strong&gt;&lt;/li&gt;
+ &lt;li&gt;Scala / Kotlin: &lt;strong&gt;13 years&lt;/strong&gt;&lt;/li&gt;
+ &lt;li&gt;AWS: &lt;strong&gt;10 years&lt;/strong&gt;&lt;/li&gt;
+ &lt;li&gt;Clojure: 4 year&lt;/li&gt;
+ &lt;li&gt;Go: 4 year&lt;/li&gt;
+ &lt;li&gt;Rust: 4 year&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;h5&gt;EDUCATION&lt;/h5&gt;
+ &lt;ul style="list-style:none;padding-left:0"&gt;
+ &lt;li&gt;&lt;strong&gt;2003-2009&lt;/strong&gt;&lt;br/&gt;Moscow Aviation Institute — Engineer's Degree in Mathematics and Computer Science&lt;/li&gt;
+ &lt;li&gt;&lt;strong&gt;2019&lt;/strong&gt;&lt;br/&gt;Course Certificate — Functional Programming Principles in Scala&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;h5&gt;LANGUAGES&lt;/h5&gt;
+ &lt;ul style="list-style:none;padding-left:0"&gt;
+ &lt;li&gt;English (fluent)&lt;/li&gt;
+ &lt;li&gt;Russian (native)&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/aside&gt;
+ &lt;main&gt;
+ &lt;div style="border-left: 3px solid;padding-left:10px;margin-left:5px"&gt;
+ &lt;h2 id="professional-experience"&gt;
+ Professional experience
+ &lt;a class="heading-link" href="#professional-experience"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Atlassian — Aug 2016 - Present&lt;/strong&gt;&lt;br&gt;
+Software engineer and technical leader working across Identity, Commerce, tenant provisioning and cloud cost efficiency initiatives.&lt;br&gt;
+&lt;strong&gt;Identity&lt;/strong&gt;&lt;br&gt;
+‣ Delivered a new User Management Platform and Access Product.&lt;br&gt;
+‣ Modernized the tech stack, proactively preventing tech debt creep.&lt;br&gt;
+‣ Implemented technical changes required to support GDPR compliance.&lt;br&gt;
+&lt;strong&gt;Commerce&lt;/strong&gt;&lt;br&gt;
+‣ Led the technical delivery of an Accounts Receivable platform integrating Stripe as payment gateway, owning key technical decisions across the payment processing lifecycle.&lt;br&gt;
+‣ Championed a platform-oriented approach across teams, improving architectural consistency and reducing tech debt.&lt;br&gt;
+‣ Mentored engineers in their technical and career development.&lt;br&gt;
+&lt;strong&gt;Provisioning &amp;amp; FinOps&lt;/strong&gt;&lt;br&gt;
+‣ Designed and implemented components of a new self-serve product provisioning orchestration framework plus test harness.&lt;br&gt;
+‣ Led cloud cost efficiency initiative, identifying and addressing resource optimisations that delivered more than $1.6M in savings.&lt;br&gt;
+&lt;strong&gt;Stack:&lt;/strong&gt; AWS, Java, Kotlin, Scala, Go, PostgreSQL, React, TypeScript&lt;br&gt;
+&lt;br&gt;
+&lt;strong&gt;Luxoft — Sep 2014 - Aug 2016&lt;/strong&gt;&lt;br&gt;
+Software engineer for Deutsche Bank trade processing project&lt;br&gt;
+‣ Developed a high-load trade processing service supporting mission-critical financial workflows.&lt;br&gt;
+&lt;strong&gt;Stack:&lt;/strong&gt; Java, Spring Framework, Oracle DB&lt;br&gt;
+&lt;br&gt;
+&lt;strong&gt;Others&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;T-Systems CIS — Dec 2012 - Sep 2014&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;Technology Systems — Jan 2012 - Dec 2012&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;Core Partners — Jul 2009 - Jan 2012&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>We Began to Forget: Demystifying Spring Framework</title><link>https://SimY4.github.io/posts/007-we-began-to-forget-demystifying-spring-framework/</link><pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/007-we-began-to-forget-demystifying-spring-framework/</guid><description>&lt;p&gt;We began to forget how to pass parameters to functions.&lt;/p&gt;
+&lt;p&gt;Before &lt;code&gt;@Bean&lt;/code&gt;, before &lt;code&gt;@Configuration&lt;/code&gt; or &lt;code&gt;@PropertySource&lt;/code&gt; and certainly way before &lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt;
+objects were responsible not only for their own behaviour, but also for creating everything they depended on.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;public&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;class&lt;/span&gt; &lt;span style="color:#0e84b5;font-weight:bold"&gt;OrderService&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;{&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;private&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;final&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;PaymentProcessor&lt;span style="color:#bbb"&gt; &lt;/span&gt;processor;&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;public&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#06287e"&gt;OrderService&lt;/span&gt;()&lt;span style="color:#bbb"&gt; &lt;/span&gt;{&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;this&lt;/span&gt;.&lt;span style="color:#4070a0"&gt;processor&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#666"&gt;=&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;new&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;StripePaymentProcessor();&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;}&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This code works, but it also quietly locks many decisions inside the class, because &lt;code&gt;OrderService&lt;/code&gt; now decides which
+payment processor is used, how it is created, and when its lifecycle starts, and once this happens, changing that
+decision means changing the code itself. Configuration and behaviour start to mix, breaking single responsibility
+principle.&lt;/p&gt;</description></item><item><title>We Began to Forget: Public Morozov Anti-Pattern</title><link>https://SimY4.github.io/posts/006-we-began-to-forget-public-morozov-anti-pattern/</link><pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/006-we-began-to-forget-public-morozov-anti-pattern/</guid><description>&lt;p&gt;I decided to start new series of blogs called “We Began to Forget”. The idea is simple and a little melancholic.
+Software engineering has a short memory, patterns get discovered and then forgotten, lessons get relearned.
+These posts are small memory refreshers about important aspects of our craft with a strong focus on clever hacks
+rather than things you can read in clever books. Books will make sure the good patterns will live on,
+but tribal knowledge has to be passed by word of mouth.&lt;/p&gt;</description></item><item><title>Avoiding Stringly Typed</title><link>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</link><pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/005-avoiding-stringly-typed/</guid><description>&lt;p&gt;There’s this saying that you shouldn’t have String as your function input unless you expect three volumes of War and Peace as valid input.
+So unless it’s your case and you want to improve your codebase to be more precise in type signatures, I invite you to discuss one possible option. I’ll use the following API as our case study:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#007020;font-weight:bold"&gt;interface&lt;/span&gt; &lt;span style="color:#0e84b5;font-weight:bold"&gt;EmailSender&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;{&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#902000"&gt;void&lt;/span&gt;&lt;span style="color:#bbb"&gt; &lt;/span&gt;&lt;span style="color:#06287e"&gt;sendEmail&lt;/span&gt;(String&lt;span style="color:#bbb"&gt; &lt;/span&gt;from,&lt;span style="color:#bbb"&gt; &lt;/span&gt;String&lt;span style="color:#bbb"&gt; &lt;/span&gt;to,&lt;span style="color:#bbb"&gt; &lt;/span&gt;String&lt;span style="color:#bbb"&gt; &lt;/span&gt;subject,&lt;span style="color:#bbb"&gt; &lt;/span&gt;String&lt;span style="color:#bbb"&gt; &lt;/span&gt;body);&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;span style="color:#bbb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;there’s an obvious ambiguity in the type signature here. All of the arguments are of the same type and can be easily misplaced.
+Not to mention that any string is accepted as a valid input that, as it seems, suppose to only be a valid email.&lt;/p&gt;</description></item><item><title>Consistency: There and Back Again</title><link>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</link><pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</guid><description>&lt;h2 id="what-is-consistency-token"&gt;
+ What is Consistency token?
+ &lt;a class="heading-link" href="#what-is-consistency-token"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the &lt;code&gt;ETag&lt;/code&gt; header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom &lt;code&gt;Event-Stream-State&lt;/code&gt; request header(s) with the following format (as per standard RFC definition):&lt;/p&gt;</description></item><item><title>Cross-Compiling Scala in Gradle project</title><link>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</link><pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/003-cross-compiling-scala-in-gradle/</guid><description>&lt;p&gt;It is quite common and widely spread practice for Scala projects to cross-compile and publish several artifacts for multiple versions of Scala compiler. As a rule, for the purposes of creating several versions of one artifact teams using &lt;a href="https://www.scala-sbt.org/" class="external-link" target="_blank" rel="noopener"&gt;SBT&lt;/a&gt; where this feature is avaiable right out of the box and can be configured in a couple of lines. But what if we want to cross-publish our Scala project the same way without using SBT?&lt;/p&gt;</description></item><item><title>Monads Explained</title><link>https://SimY4.github.io/posts/002-monads-explained/</link><pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/002-monads-explained/</guid><description>&lt;h2 id="referential-transparency"&gt;
+ Referential transparency
+ &lt;a class="heading-link" href="#referential-transparency"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs.
+It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.&lt;/p&gt;</description></item><item><title>Here you are!</title><link>https://SimY4.github.io/posts/001-here-you-are/</link><pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/001-here-you-are/</guid><description>&lt;p&gt;Hi, there.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re reading this that means that you&amp;rsquo;ve ended up in my personal blog. Welcome! I&amp;rsquo;ll try to keep it short and interesting for both of us.&lt;/p&gt;
+&lt;p&gt;In the past few years, I&amp;rsquo;ve got fascinated by the topic of pure functional programming. I was lucky enough to see it being applied in real-world projects, I learned a lot from people practising it at their everyday work. And today, I believe I grasped enough knowledge on this topic for me to share it with you as a series of educative blog posts.&lt;/p&gt;</description></item></channel></rss>

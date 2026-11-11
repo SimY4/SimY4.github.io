@@ -1,31 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Fp on My personal space</title>
-		<link>https://SimY4.github.io/tags/fp/</link>
-		<description>Recent content in Fp on My personal space</description>
-		<generator>Hugo</generator>
-		<language>en</language>
-		
-		
-		
-		
-			<lastBuildDate>Sun, 18 Jul 2021 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="https://SimY4.github.io/tags/fp/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Consistency: There and Back Again</title>
-				<link>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</link>
-				<pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</guid>
-				<description>&lt;h2 id=&#34;what-is-consistency-token&#34;&gt;&#xA;  What is Consistency token?&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#what-is-consistency-token&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the &lt;code&gt;ETag&lt;/code&gt; header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom &lt;code&gt;Event-Stream-State&lt;/code&gt; request header(s) with the following format (as per standard RFC definition):&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Monads Explained</title>
-				<link>https://SimY4.github.io/posts/002-monads-explained/</link>
-				<pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-				<guid>https://SimY4.github.io/posts/002-monads-explained/</guid>
-				<description>&lt;h2 id=&#34;referential-transparency&#34;&gt;&#xA;  Referential transparency&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#referential-transparency&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs.&#xA;It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.&lt;/p&gt;</description>
-			</item>
-	</channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fp on My personal space</title><link>https://SimY4.github.io/tags/fp/</link><description>Recent content in Fp on My personal space</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 18 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://SimY4.github.io/tags/fp/index.xml" rel="self" type="application/rss+xml"/><item><title>Consistency: There and Back Again</title><link>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</link><pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/004-consistency-there-and-back-again/</guid><description>&lt;h2 id="what-is-consistency-token"&gt;
+ What is Consistency token?
+ &lt;a class="heading-link" href="#what-is-consistency-token"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A consistency token represents the state of a resource or entity at a given point in time. It is opaque to consumers, returned in the &lt;code&gt;ETag&lt;/code&gt; header by data modifying APIs. Consumers may cache some of these tokens in a request-local or short-term cache when coordinating a number of calls to control the consistency they require via a custom &lt;code&gt;Event-Stream-State&lt;/code&gt; request header(s) with the following format (as per standard RFC definition):&lt;/p&gt;</description></item><item><title>Monads Explained</title><link>https://SimY4.github.io/posts/002-monads-explained/</link><pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate><guid>https://SimY4.github.io/posts/002-monads-explained/</guid><description>&lt;h2 id="referential-transparency"&gt;
+ Referential transparency
+ &lt;a class="heading-link" href="#referential-transparency"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Referential transparency is a nice property of pure functional programming languages that allow us to reason about the behaviour of our programs.
+It guarantees that all expressions are always evaluating to the same result in any context. What it gives to the programmer is an ease of equational reasoning about any pure program as they used to do it in math.&lt;/p&gt;</description></item></channel></rss>
